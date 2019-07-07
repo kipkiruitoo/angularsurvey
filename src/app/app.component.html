@@ -1,12 +1,3 @@
-<h1>
-  {{ title }}
-</h1>
-
-<h1>Survey</h1>
+<h1>{{title}}</h1>
+<router-outlet></router-outlet>
 <survey [json]="json" (submitSurvey)="sendData($event)"></survey>
-
-<h1>Survey JS Creator</h1>
-<survey-creator
-  [json]="json"
-  (surveySaved)="onSurveySaved($event)"
-></survey-creator>
