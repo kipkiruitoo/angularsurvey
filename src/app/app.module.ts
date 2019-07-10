@@ -8,9 +8,10 @@ import { SurveyComponent } from "./repondent/answer-survey/survey.component";
 import { SurveyCreatorComponent } from "./admin/create-survey/survey.creator.component";
 // import { CreateSurveyComponent } from "./admin/create-survey/create-survey.component";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { HomeComponent } from './home/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent],
+  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent],
 
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [],
