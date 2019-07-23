@@ -1,0 +1,25 @@
+.footer{
+  background-color: #FFB900;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  line-height: 50px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFB900;
+  color: white;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 20px;
+}

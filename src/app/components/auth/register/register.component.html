@@ -1,0 +1,37 @@
+<body>
+  <div class="container">
+
+  <h1>GREAT PLACES TO SCHOOL</h1>
+  <form class="form-signin">
+
+    <div class="form-label-group">
+      <input type="text" [(ngModel)]="registerUserData.username" placeholder="Username" name="username" class="form-control rounded-0" required>
+    </div>
+    <div class="form-label-group">
+      <input type="email" [(ngModel)]="registerUserData.email" placeholder="Email address" name="email" class="form-control rounded-0"  required>
+    </div>
+    <div class="form-label-group">
+      <input type="password" [(ngModel)]="registerUserData.password" placeholder="Password" name="password" class="form-control rounded-0"  required>
+    </div>
+    <button type="button" (click)="registerUser()" class="btn btn-lg btn-primary btn-block">Register</button>
+    </form>
+  </div>
+  </body>
+
+
+
+  <!-- <div class="signup-form">
+    <form class="" action="index.html" method="post">
+      <h1>Please Fill All Details Below</h1>
+      <input type="text" placeholder="Name of School" class="txtb" required>
+      <input type="text" placeholder="Location" class="txtb" required>
+      <input type="Email" placeholder="Email" class="txtb" required>
+      <input type="text" placeholder="Postal Address" class="txtb" required>
+      <input type="Telephone" placeholder="Telephone Number" class="txtb" required>
+      <input type="password" placeholder="Password" class="txtb"required>
+      <input type="password" placeholder="Confirm Password" class="txtb"required>
+      <input type="submit" value="Create Account" class="signup-btn">
+      <a href="#">Already Have one ?</a>
+    </form>
+  </div> -->
+

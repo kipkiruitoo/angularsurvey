@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
 })
 export class SurveyService {
   private url = 'http://127.0.0.1:8000/survey/questionaires/';
+  private category_url = 'http://127.0.0.1:8000/survey/categories/';
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
   });
 
   json;
+  category = {};
 
   constructor(private http: HttpClient) {
     // this.json = {
@@ -206,12 +208,23 @@ export class SurveyService {
   }
   saveSurvey(json) {
     this.json = json;
-    console.log(this.json)
+    // console.log(this.json)
   }
-  submitSurvey(){
+  saveCategory(title,desc) {
+    this.category['name'] = title;
+    this.category['description'] = desc;
+    // console.log(this.category)
+  }
+  submitCategory(){
+    // console.log(this.json)
+    return this.http.post<any>(this.category_url, this.category);
+  }
+  submitSurvey(id){
+    this.json['category'] = id
     console.log(this.json)
     return this.http.post<any>(this.url, this.json);
   }
+
 }
 
 

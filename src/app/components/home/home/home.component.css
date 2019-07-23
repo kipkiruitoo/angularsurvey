@@ -1,0 +1,10 @@
+.foot{
+  width: 100%;
+  position: bottom;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(27, 27, 27);
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
