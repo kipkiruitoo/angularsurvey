@@ -1,7 +1,9 @@
 import { Component, Input, EventEmitter, Output, OnInit } from "@angular/core";
+
 import * as Survey from "survey-angular";
 import * as widgets from "surveyjs-widgets";
 import { SurveyService } from "../../../services/survey.service";
+import { ActivatedRoute } from '@angular/router';
 
 import "inputmask/dist/inputmask/phone-codes/phone.js";
 
@@ -33,8 +35,9 @@ export class SurveyComponent implements OnInit {
   // @Input()
   // json: object;
   json;
+  public  id: string;
 
-  constructor(private surveyservice: SurveyService) {}
+  constructor(private surveyservice: SurveyService,private route: ActivatedRoute) {}
   onSurveySaved(survey) {
     this.surveyservice.saveSurvey(survey);
   }
@@ -44,7 +47,9 @@ export class SurveyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.json = this.surveyservice.getSurveys();
+    // this.id = this.route.snapshot.paramMap.get('id');
+    this.json = this.surveyservice.getQuestions();
+    console.log(this.json)
     const surveyModel = new Survey.Model(this.json);
     surveyModel.onAfterRenderQuestion.add((survey, options) => {
       if (!options.question.popupdescription) {
@@ -68,5 +73,19 @@ export class SurveyComponent implements OnInit {
     });
     surveyModel.onComplete.add(result => this.submitSurvey.emit(result.data));
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });
+
   }
+
+  // getOneCategories(id) {
+  //   this.surveyservice.getOneCategory(id)
+  //     .subscribe(
+  //       res => this.json,
+  //       err => console.log(err)
+  //     );
+  // }
+
+  // getQues() {
+  //   this.getOneCategories(this.id)
+  // }
+
 }

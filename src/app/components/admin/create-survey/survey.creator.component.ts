@@ -77,15 +77,17 @@ export class SurveyCreatorComponent {
 
   saveMySurvey = () => {
     // console.log(JSON.stringify(this.surveyCreator.text));
-    this.surveyservice.saveSurvey(JSON.parse(this.surveyCreator.text));
     this.json = JSON.parse(this.surveyCreator.text);
+    this.surveyservice.saveSurvey(this.json['pages']);
     // console.log(this.json['title'])
     // console.log(this.json['description'])
     this.page = JSON.stringify(this.surveyCreator.text)
+    console.log(this.json)
     this.saveMyCategory();
   };
   saveMyCategory = () => {
     this.json = JSON.parse(this.surveyCreator.text);
+    // console.log(this.json['title'])
     this.surveyservice.saveCategory(this.json['title'],this.json['description']);
     // console.log(this.json['title'])
     this.submitCategories()
@@ -107,3 +109,4 @@ export class SurveyCreatorComponent {
   }
 }
 
+// this.submitSurveys

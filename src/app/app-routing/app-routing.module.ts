@@ -7,6 +7,8 @@ import { LoginComponent } from "../components/auth/login/login.component";
 import { RegisterComponent } from "../components/auth/register/register.component";
 import { ProfileComponent } from "../components/usersPages/profile/profile.component"
 import { AdminComponent } from "../components/admin/admin/admin.component";
+import { ViewSurveysComponent } from '../components/respondent/view-surveys/view-surveys.component';
+
 
 import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -43,6 +45,10 @@ const routes: Routes = [
   {
     path: "createSurvey",
     component: SurveyCreatorComponent
+  },
+  {
+    path: "viewSurvey",
+    component: ViewSurveysComponent
   }
 ];
 @NgModule({

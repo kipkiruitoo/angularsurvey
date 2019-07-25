@@ -1,0 +1,47 @@
+<div class="container-fluid">
+
+  <div class="moreHeader row">
+    <div class="col-xs-6" >
+      <div class="btn-group ">
+          <button type="button" class="btn btn-white" (click)="getCats()" type="button">
+              VIEW ALL CATEGORIES
+          </button>
+      </div>
+      <!-- <button class="btn btn-white" (click)="getRest()" type="button"><h2></h2></button> -->
+    </div>
+  </div>
+  <hr>
+</div>
+<!-- </section> -->
+<section id="more">
+  <div class="grid-container popular">
+    <div *ngFor="let res of cats">
+      <!-- Card Light -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="" alt="Category ">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+        <!-- Card content -->
+        <div class="card-body">
+          <!-- Title -->
+          <h4 class="card-title">{{res.name}}</h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text">{{res.description}}</p>
+          <!-- Link -->
+          <a [routerLink]="['/survey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
+            <h5>View Category <i class="fas fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+      <!-- Card Light -->
+    </div>
+  </div>
+</section>
+<!-- </section> -->
