@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http" ;
 import  { HttpModule } from '@angular/http';
 import { Observable } from "rxjs";
 import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: "root"
 })
@@ -17,7 +18,7 @@ export class SurveyService {
   json = {} ;
   category = {"name":'',"description":''} ;
   question;
-  question1 = '';
+  answers;
   // question1 = JSON.parse(this.question) = {'category':'', 'pages':''}
   constructor(private http: HttpClient) {}
 
@@ -52,8 +53,15 @@ export class SurveyService {
     console.log(this.json)
     return this.http.post<any>(this.json_url, this.json);
   }
+  getCategoryId(){
+    return this.json['category']
+  }
   getCategory(){
     return this.http.get<any>(this.category_url);
+  }
+  saveAnswers(answer){
+    this.answers = answer;
+    console.log(this.answers);
   }
 
 }

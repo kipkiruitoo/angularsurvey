@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public loginUserData = {email:'', password: ''};
-
+  user_id;
   constructor(private _auth: AuthService,
               private _router: Router) { }
 
@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
         res => {
           console.log(res)
           localStorage.setItem('token', res.token);
+          this.user_id = res.id;
+          this._auth.saveUserId(this.user_id);
           this._router.navigate(['']);
         },
         err => console.log(err)

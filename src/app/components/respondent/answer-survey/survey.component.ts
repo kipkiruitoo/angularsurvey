@@ -4,6 +4,7 @@ import * as Survey from "survey-angular";
 import * as widgets from "surveyjs-widgets";
 import { SurveyService } from "../../../services/survey.service";
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 import "inputmask/dist/inputmask/phone-codes/phone.js";
 
@@ -36,11 +37,13 @@ export class SurveyComponent implements OnInit {
   // json: object;
   json;
   public  id: string;
+  answers = {'school':'','category':'','answer':''};
+  category;
+  school;
+  // submitData = [];
 
-  constructor(private surveyservice: SurveyService,private route: ActivatedRoute) {}
-  onSurveySaved(survey) {
-    this.surveyservice.saveSurvey(survey);
-  }
+  constructor(private surveyservice: SurveyService,private route: ActivatedRoute,private authService: AuthService) {}
+
 
   click(result) {
     console.log(result);
@@ -71,21 +74,24 @@ export class SurveyComponent implements OnInit {
       header.appendChild(span);
       header.appendChild(btn);
     });
-    surveyModel.onComplete.add(result => this.submitSurvey.emit(result.data));
+    surveyModel.onComplete.add((result) => {
+      this.submitSurvey.emit(result.data);
+      console.log(result.data)
+      this.answers['category'] = this.surveyservice.getCategoryId();
+      this.answers['school']= this.authService.getUserId();
+      this.answers['answer'] = result.data;
+      this.onSurveySaved(this.answers);
+      console.log(this.surveyservice.getCategoryId())
+    });
+    // console.log(this.answers)
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });
 
   }
 
-  // getOneCategories(id) {
-  //   this.surveyservice.getOneCategory(id)
-  //     .subscribe(
-  //       res => this.json,
-  //       err => console.log(err)
-  //     );
-  // }
+  onSurveySaved(survey) {
+    console.log(survey);
+    this.surveyservice.saveAnswers(survey);
 
-  // getQues() {
-  //   this.getOneCategories(this.id)
-  // }
+  }
 
 }

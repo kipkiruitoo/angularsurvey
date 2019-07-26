@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  user_id;
+
   private _registerUrl = 'http://127.0.0.1:8000/api/auth/register/';
   private _loginUrl = 'http://127.0.0.1:8000/api/auth/login/';
   constructor(private http: HttpClient,
@@ -30,5 +32,12 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+  saveUserId(id){
+    this.user_id = id;
+    console.log(this.user_id);
+  }
+  getUserId(){
+    return this.user_id;
   }
 }
