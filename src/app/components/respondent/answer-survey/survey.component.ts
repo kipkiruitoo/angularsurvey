@@ -77,11 +77,12 @@ export class SurveyComponent implements OnInit {
     surveyModel.onComplete.add((result) => {
       this.submitSurvey.emit(result.data);
       console.log(result.data)
+      console.log(this.surveyservice.getCategoryId())
       this.answers['category'] = this.surveyservice.getCategoryId();
       this.answers['school']= this.authService.getUserId();
       this.answers['answer'] = result.data;
       this.onSurveySaved(this.answers);
-      console.log(this.surveyservice.getCategoryId())
+
     });
     // console.log(this.answers)
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });

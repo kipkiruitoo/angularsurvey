@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
           console.log(res)
           localStorage.setItem('token', res.token);
           this.user_id = res.id;
+          console.log(res.id)
           this._auth.saveUserId(this.user_id);
           this._router.navigate(['']);
         },

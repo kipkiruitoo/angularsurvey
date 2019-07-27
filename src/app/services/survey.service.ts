@@ -16,6 +16,7 @@ export class SurveyService {
   });
 
   json = {} ;
+  categoryId;_
   category = {"name":'',"description":''} ;
   question;
   answers;
@@ -54,7 +55,10 @@ export class SurveyService {
     return this.http.post<any>(this.json_url, this.json);
   }
   getCategoryId(){
-    return this.json['category']
+    return this.categoryId
+  }
+  setCategoryId(id) {
+    this.categoryId = id;
   }
   getCategory(){
     return this.http.get<any>(this.category_url);
