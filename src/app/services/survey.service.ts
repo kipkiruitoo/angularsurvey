@@ -8,61 +8,78 @@ import { Router } from '@angular/router';
   providedIn: "root"
 })
 export class SurveyService {
+  // Url for questionaires endpoint
   private json_url = 'http://127.0.0.1:8000/survey/questionaires/';
+  // Url for categories endpoint
   private category_url = 'http://127.0.0.1:8000/survey/categories/';
-  // private Onecategory_url = `http://127.0.0.1:8000/survey/categories/{}`;
+
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
   });
 
+  // global variables for storing data
   json = {} ;
   categoryId;_
   category = {"name":'',"description":''} ;
   question;
   answers;
-  // question1 = JSON.parse(this.question) = {'category':'', 'pages':''}
+
   constructor(private http: HttpClient) {}
 
+  // retrieve the questions of the category the user wants to view 
   getQuestions() {
     return this.question;
   }
 
+  // stores the question to be viewed when the user clicks on view category
   saveQuestions(category) {
     this.question = category;
     console.log(this.question)
   }
 
+  // retrieves the saved questionaire
   getSurveys() {
     return this.json;
   }
-  saveSurvey(json) {
-    this.json['pages'] = json;
-    // console.log(this.json['pages'])
+  // saves the pages created on a questionaire
+  saveSurvey(pages) {
+    this.json['pages'] = pages;
   }
+
+  // saves the category created when the scripter creates a new category
   saveCategory(title,desc) {
-    // console.log(title)
     this.category['name'] = title;
     this.category['description'] = desc;
-    // console.log(this.category)
   }
+
+  //post request for adding the category created
   submitCategory(){
-    // console.log(this.json)
     return this.http.post<any>(this.category_url, this.category);
   }
+
+  //post request for saving the questionaire created
   submitSurvey(id){
     this.json['category'] = id
     console.log(this.json)
     return this.http.post<any>(this.json_url, this.json);
   }
+
+  // retrieve the categoryId for the questionaire being answered
   getCategoryId(){
     return this.categoryId
   }
+
+  // store the categoryId for the questionaire being answered
   setCategoryId(id) {
     this.categoryId = id;
   }
+
+  // get request for retrieving all the categories
   getCategory(){
     return this.http.get<any>(this.category_url);
   }
+
+  // stores the answers once the user submits
   saveAnswers(answer){
     this.answers = answer;
     console.log(this.answers);

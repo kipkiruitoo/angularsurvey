@@ -34,11 +34,6 @@ export class ViewSurveysComponent implements OnInit {
         this.question['title'] = this.cats[i]['name'];
         this.question['pages'] = this.cats[i]['questionaire'][0]['pages'];
         this.surveyService.setCategoryId(id);
-        // this.question = this.cats[i]['questionaire'][0]['pages'];
-        // this.question1 = JSON.parse(this.question)
-        // console.log(this.question1)
-        // console.log(this.question)
-        // console.log(this.category)
         this.surveyService.saveQuestions(this.question)
       }
     }
