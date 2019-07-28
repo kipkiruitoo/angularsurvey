@@ -82,7 +82,7 @@ export class SurveyCreatorComponent {
     // console.log(this.json['title'])
     // console.log(this.json['description'])
     this.page = JSON.stringify(this.surveyCreator.text)
-    console.log(this.json)
+    console.log(this.json) 
     this.saveMyCategory();
   };
   saveMyCategory = () => {

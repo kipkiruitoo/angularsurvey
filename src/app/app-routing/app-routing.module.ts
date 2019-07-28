@@ -43,11 +43,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: "createSurvey",
+    path: "createsurvey",
     component: SurveyCreatorComponent
   },
   {
-    path: "viewSurvey",
+    path: "viewsurvey",
     component: ViewSurveysComponent
   }
 ];
@@ -56,4 +56,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
