@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public loginUserData = { email: '', password: '' };
   user_id;
   user_url = "http://localhost:8000/api/users/";
-  user: any;
+  user: any = { groups: '' }
   public role = "";
   constructor(private _auth: AuthService,
     private _router: Router,

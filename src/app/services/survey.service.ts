@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http" ;
-import  { HttpModule } from '@angular/http';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpModule } from '@angular/http';
 import { Observable } from "rxjs";
 import { Router } from '@angular/router';
 
@@ -19,20 +19,20 @@ export class SurveyService {
   });
 
   // global variables for storing data
-  json = {} ;
-  categoryId;_
-  category = {"name":'',"description":''} ;
+  json = {};
+  categoryId; _
+  category = { "name": '', "description": '' };
   question;
   answers;
   storedAnswers;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // retrieve the questions of the category the user wants to view
   getQuestions() {
     return this.question;
   }
-  getAnswers(){
+  getAnswers() {
     return this.storedAnswers;
   }
   storeAnswers(answer) {
@@ -55,25 +55,25 @@ export class SurveyService {
   }
 
   // saves the category created when the scripter creates a new category
-  saveCategory(title,desc) {
+  saveCategory(title, desc) {
     this.category['name'] = title;
     this.category['description'] = desc;
   }
 
-  //post request for adding the category created
-  submitCategory(){
+  // post request for adding the category created
+  submitCategory() {
     return this.http.post<any>(this.category_url, this.category);
   }
 
-  //post request for saving the questionaire created
-  submitSurvey(id){
+  // post request for saving the questionaire created
+  submitSurvey(id) {
     this.json['category'] = id
     console.log(this.json)
     return this.http.post<any>(this.json_url, this.json);
   }
 
   // retrieve the categoryId for the questionaire being answered
-  getCategoryId(){
+  getCategoryId() {
     return this.categoryId
   }
 
@@ -83,14 +83,26 @@ export class SurveyService {
   }
 
   // get request for retrieving all the categories
-  getCategory(){
+  getCategory() {
     return this.http.get<any>(this.category_url);
   }
 
   // stores the answers once the user submits
-  saveAnswers(answer){
+  saveAnswers(answer) {
     this.answers = answer
     return this.http.post<any>(this.answers_url, this.answers);
+  }
+  // created this 2 new methods
+  postCategory(category) {
+
+    return this.http.post<any>(this.category_url, category);
+
+
+  }
+
+  postQuestionnaire(questions) {
+
+    return this.http.post(this.json_url, questions);
   }
 
 }

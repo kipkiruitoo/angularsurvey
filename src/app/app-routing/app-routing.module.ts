@@ -53,6 +53,10 @@ const routes: Routes = [
     component: SurveyCreatorComponent
   },
   {
+    path: "editsurvey",
+    component: EditsurveyComponent
+  },
+  {
     path: "viewsurvey",
     component: ViewSurveysComponent
   }
