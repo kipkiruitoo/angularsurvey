@@ -16,8 +16,8 @@ export class ProfileComponent implements OnInit {
     "Content-Type": "application/json"
   });
   profile = { user: "", dob: "", city: "", address: "", county: "", zip: "" };
-  user = { id: "", email: "", username: "", role: "" };
-  id = 1;
+  user: any;
+  id = 3;
   username;
   email;
   county;
