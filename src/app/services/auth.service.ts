@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../components/auth/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,10 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   user_id;
-
+  role;
   private _registerUrl = 'http://127.0.0.1:8000/api/auth/register/';
   private _loginUrl = 'http://127.0.0.1:8000/api/auth/login/';
+  user_url = "http://localhost:8000/api/users/";
   constructor(private http: HttpClient,
     private _router: Router) { }
 
@@ -24,6 +26,8 @@ export class AuthService {
   }
   logoutUser() {
     localStorage.removeItem('token');
+    this.role = "Respondent"
+    // LoginComponent.resetRole();
     this._router.navigate(['/login']);
   }
   loggedIn() {
@@ -33,14 +37,16 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('token');
   }
-  saveUserId(id){
+  saveUserId(id) {
     this.user_id = id;
     console.log(this.user_id);
   }
-  getUserId(){
-    return localStorage.getItem('userId');
+  getUserId() {
+    return this.user_id;
   }
-  // saveLoggedInUser(id){
-  //   localStorage.setItem('userId',id)
-  // }
+  getRole(id) {
+    return this.http.get(this.user_url + id + '/');
+
+
+  }
 }
