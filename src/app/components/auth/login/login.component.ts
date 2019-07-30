@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { AnswerCountValidator } from 'survey-angular';
+import { Answers } from '../../../models/answers';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Input() answers: Answers;
 
   public loginUserData = {email:'', password: ''};
   user_id;
+  answer = {'school':0 ,'category':0,'answer':''};
   constructor(private _auth: AuthService,
               private _router: Router) { }
 
@@ -22,9 +26,13 @@ export class LoginComponent implements OnInit {
         res => {
           console.log(res)
           localStorage.setItem('token', res.token);
-          this.user_id = res.id;
-          console.log(res.id)
-          this._auth.saveUserId(this.user_id);
+          localStorage.setItem('userId', res.id);
+          // this.user_id = res.id;
+          // this.answer.school = this.user_id;
+          // this.answers = this.answer
+          // console.log(this.answers)
+          // console.log(res.id)
+          this._auth.saveUserId(this.answers);
           this._router.navigate(['']);
         },
         err => console.log(err)

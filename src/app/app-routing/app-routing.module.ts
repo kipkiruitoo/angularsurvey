@@ -8,6 +8,7 @@ import { RegisterComponent } from "../components/auth/register/register.componen
 import { ProfileComponent } from "../components/usersPages/profile/profile.component"
 import { AdminComponent } from "../components/admin/admin/admin.component";
 import { ViewSurveysComponent } from '../components/respondent/view-surveys/view-surveys.component';
+import { EditsurveyComponent } from '../components/admin/editsurvey/editsurvey.component';
 
 
 import { RouterModule, Routes } from "@angular/router";
@@ -15,6 +16,11 @@ import { CommonModule } from "@angular/common";
 import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
+  {
+    path: "editSurvey",
+    component: EditsurveyComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: "survey",
     component: SurveyComponent,

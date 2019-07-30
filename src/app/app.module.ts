@@ -23,10 +23,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptorService } from './services/tokeninterceptor.service';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
-import { ViewSurveysComponent } from './components/respondent/view-surveys/view-surveys.component'
+import { ViewSurveysComponent } from './components/respondent/view-surveys/view-surveys.component';
+import { EditsurveyComponent } from './components/admin/editsurvey/editsurvey.component'
 
 @NgModule({
-  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent],
+  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent],
 
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [AuthService, AuthGuard,{

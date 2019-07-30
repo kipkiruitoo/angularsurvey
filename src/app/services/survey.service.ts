@@ -12,6 +12,7 @@ export class SurveyService {
   private json_url = 'http://127.0.0.1:8000/survey/questionaires/';
   // Url for categories endpoint
   private category_url = 'http://127.0.0.1:8000/survey/categories/';
+  private answers_url = 'http://127.0.0.1:8000/survey/answers/';
 
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
@@ -23,14 +24,21 @@ export class SurveyService {
   category = {"name":'',"description":''} ;
   question;
   answers;
+  storedAnswers;
 
   constructor(private http: HttpClient) {}
 
-  // retrieve the questions of the category the user wants to view 
+  // retrieve the questions of the category the user wants to view
   getQuestions() {
     return this.question;
   }
-
+  getAnswers(){
+    return this.storedAnswers;
+  }
+  storeAnswers(answer) {
+    this.storedAnswers = answer
+    console.log(this.storedAnswers)
+  }
   // stores the question to be viewed when the user clicks on view category
   saveQuestions(category) {
     this.question = category;
@@ -81,8 +89,8 @@ export class SurveyService {
 
   // stores the answers once the user submits
   saveAnswers(answer){
-    this.answers = answer;
-    console.log(this.answers);
+    this.answers = answer
+    return this.http.post<any>(this.answers_url, this.answers);
   }
 
 }

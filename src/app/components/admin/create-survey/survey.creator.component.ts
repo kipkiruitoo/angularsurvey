@@ -102,7 +102,7 @@ export class SurveyCreatorComponent {
   submitSurveys(id) {
     this.surveyservice.submitSurvey(id)
       .subscribe(
-        res => console.log(res['id']),
+        res => console.log(res),
         // res['id']=this.cat_id,
         err => console.log(err)
       );

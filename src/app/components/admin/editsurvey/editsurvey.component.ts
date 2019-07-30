@@ -1,11 +1,9 @@
 import { Component, Input, EventEmitter, Output, OnInit } from "@angular/core";
-
 import * as Survey from "survey-angular";
 import * as widgets from "surveyjs-widgets";
+import { AnswersService } from '../../../services/answers.service';
 import { SurveyService } from "../../../services/survey.service";
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { Answers } from '../../../models/answers';
 
 import "inputmask/dist/inputmask/phone-codes/phone.js";
 
@@ -27,33 +25,27 @@ Survey.JsonObject.metaData.addProperty("questionbase", "popupdescription:text");
 Survey.JsonObject.metaData.addProperty("page", "popupdescription:text");
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: "survey",
-  templateUrl: "./answer-survey.component.html"
+  selector: 'app-editsurvey',
+  templateUrl: './editsurvey.component.html',
+  styleUrls: ['./editsurvey.component.css']
 })
-export class SurveyComponent implements OnInit {
+export class EditsurveyComponent implements OnInit {
   @Output() submitSurvey = new EventEmitter<any>();
-  // @Input() answers: Answers
-  // @Input()
-  // json: object;
   json;
-  public  id: string;
-  answer = {'school': 0 ,'category':0,'answer':''};
+  answer;
   category;
   school;
-
-  constructor(private surveyservice: SurveyService,private route: ActivatedRoute,private authService: AuthService) {}
-
-
-  click(result) {
-    console.log(result);
-  }
+  answers = {'school': 0 ,'category':0,'answer':''};
+  constructor(private answerservice: AnswersService,private surveyservice: SurveyService,private authService: AuthService) { }
 
   ngOnInit() {
-    // this.id = this.route.snapshot.paramMap.get('id');
     this.json = this.surveyservice.getQuestions();
     console.log(this.json)
+    this.answer = this.surveyservice.getAnswers();
     const surveyModel = new Survey.Model(this.json);
+    console.log(this.answer)
+    // surveyModel.currentPageNo = this.answer.currentPageNo
+    surveyModel.data = this.answer
     surveyModel.onAfterRenderQuestion.add((survey, options) => {
       if (!options.question.popupdescription) {
         return;
@@ -76,37 +68,22 @@ export class SurveyComponent implements OnInit {
     });
     surveyModel.onComplete.add((result) => {
       this.submitSurvey.emit(result.data);
-      this.school = parseInt(this.authService.getUserId())
-      // console.log(typeof this.school)
-      this.answer.school = this.school
-      // console.log(this.authService.getUserId())
-      // console.log(this.surveyservice.getCategoryId())
+      this.school = parseInt(this.authService.getUserId());
+      this.answers.school = this.school
       this.category = this.surveyservice.getCategoryId();
-      this.answer.category = this.category
-      // this.answer.school = parseInt(this.answer.school)
-      // console.log(this.answer.school)
-      // this.answers = this.answer
-      // this.answers['school']= this.authService.getUserId();
-      this.answer['answer'] = result.data;
-      console.log(this.answer)
-      this.onSurveySaved(this.answer);
-
-    });
-    // console.log(this.answers)
+      this.answers.category = this.category;
+      this.answers['answer'] = result.data;
+      console.log(this.answers)
+      // this.onSurveyUpdate(this.answer);
+    })
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });
-
   }
-
-  onSurveySaved(survey) {
+  onSurveyUpdate(survey) {
     this.surveyservice.saveAnswers(survey)
       .subscribe(
         res => console.log(res),
         err => console.log(err)
       );
-
-    // console.log(survey);
-    // this.surveyservice.saveAnswers(survey);
-
-  }
+      }
 
 }

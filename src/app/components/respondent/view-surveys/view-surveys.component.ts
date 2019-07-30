@@ -14,6 +14,7 @@ export class ViewSurveysComponent implements OnInit {
   categories = [];
   question = {'title':'','showProgressBar':'top','pages':''} ;
   cats;
+  answers;
   // question;
   question1 = '';
   ngOnInit() {
@@ -33,7 +34,9 @@ export class ViewSurveysComponent implements OnInit {
         console.log(this.cats[i])
         this.question['title'] = this.cats[i]['name'];
         this.question['pages'] = this.cats[i]['questionaire'][0]['pages'];
+        this.answers= this.cats[i]['answers'][0]['answer'];
         this.surveyService.setCategoryId(id);
+        this.surveyService.storeAnswers(this.answers)
         this.surveyService.saveQuestions(this.question)
       }
     }
