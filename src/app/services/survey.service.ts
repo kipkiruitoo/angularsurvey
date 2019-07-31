@@ -20,10 +20,12 @@ export class SurveyService {
 
   // global variables for storing data
   json = {};
-  categoryId; _
+  categoryId;
+  question = { title: '', showProgressBar: 'top', pages: '' };
   category = { "name": '', "description": '' };
-  question;
+
   answers;
+  cats;
   storedAnswers;
 
   constructor(private http: HttpClient) { }
@@ -103,6 +105,21 @@ export class SurveyService {
   postQuestionnaire(questions) {
 
     return this.http.post(this.json_url, questions);
+  }
+
+  getSurv(id) {
+
+    this.http.get(this.category_url + id + '/').subscribe(cat => {
+      this.cats = cat
+      this.question.title = cat['name'];
+      this.question.pages = (this.cats.questionaire[0].pages);
+      // this.answers = this.cats[i]['answers'][0]['answer'];
+
+      // return this.question;
+    });
+
+    // // console.log(this.question);
+    return this.question;
   }
 
 }

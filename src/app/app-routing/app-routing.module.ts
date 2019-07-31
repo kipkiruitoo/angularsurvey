@@ -22,7 +22,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "survey",
+    path: "survey/:id",
     component: SurveyComponent,
     canActivate: [AuthGuard]
   },

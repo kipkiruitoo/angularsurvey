@@ -1,11 +1,11 @@
 <div class="container-fluid">
 
   <div class="moreHeader row">
-    <div class="col-xs-6" >
+    <div class="col-xs-6">
       <div class="btn-group ">
-          <button type="button" class="btn btn-white" (click)="getCats()" type="button">
-              VIEW ALL CATEGORIES
-          </button>
+        <button type="button" class="btn btn-white" (click)="getCats()" type="button">
+          VIEW ALL CATEGORIES
+        </button>
       </div>
       <!-- <button class="btn btn-white" (click)="getRest()" type="button"><h2></h2></button> -->
     </div>
@@ -35,7 +35,7 @@
           <!-- Text -->
           <p class="card-text">{{res.description}}</p>
           <!-- Link -->
-          <a [routerLink]="['/survey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
+          <a routerLink="/survey/{{res.id}}" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
             <h5>View Category <i class="fas fa-angle-double-right"></i></h5>
           </a>
           <a [routerLink]="['/editSurvey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
