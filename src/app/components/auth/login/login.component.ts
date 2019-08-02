@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this._auth.getRole(this.user_id).subscribe(user => {
             // console.log(user.groups[0].name)
             this.role = "";
+            console.log(user)
             this.role = user['groups'][0].name;
             console.log("this is the role returned" + this.role)
 

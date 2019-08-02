@@ -41,6 +41,7 @@ export class ViewSurveysComponent implements OnInit {
         this.surveyService.setCategoryId(id);
         this.surveyService.storeAnswers(this.answers)
         this.surveyService.saveQuestions(this.question)
+        console.log(this.question)
       }
     }
   }

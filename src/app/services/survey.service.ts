@@ -82,6 +82,7 @@ export class SurveyService {
   // store the categoryId for the questionaire being answered
   setCategoryId(id) {
     this.categoryId = id;
+    localStorage.setItem('categoryId',this.categoryId)
   }
 
   // get request for retrieving all the categories

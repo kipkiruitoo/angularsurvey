@@ -37,12 +37,13 @@ export class SurveyComponent implements OnInit {
   cat_id;
 
   constructor(private surveyservice: SurveyService, private route: ActivatedRoute, private authService: AuthService) {
-    this.route.params.subscribe(params => {
-      console.log(params.id),
-        this.cat_id = params.id
-    });
+    // this.route.params.subscribe(params => {
+    //   console.log(params.id),
+    //     this.cat_id = params.id
+    // });
   }
-  json: object = this.surveyservice.getSurv(this.cat_id);
+
+  json: object = this.surveyservice.getQuestions();
 
 
   result: any;
@@ -88,4 +89,5 @@ export class SurveyComponent implements OnInit {
     surveyPDF.data = this.result;
     surveyPDF.save("survey PDF example");
   }
+
 }
