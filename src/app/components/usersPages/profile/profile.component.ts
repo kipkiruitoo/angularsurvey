@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   });
   profile = { user: "", dob: "", city: "", address: "", county: "", zip: "" };
   user: any;
-  id = 3;
+  id = 2;
   username;
   email;
   county;

@@ -21,9 +21,9 @@ export class SurveyService {
   // global variables for storing data
   json = {};
   categoryId;
-  question = { title: '', showProgressBar: 'top', pages: '' };
+  questions = { 'title': '', 'showProgressBar': 'top', 'pages': '' };
   category = { "name": '', "description": '' };
-
+  test={};
   answers;
   cats;
   storedAnswers;
@@ -32,7 +32,8 @@ export class SurveyService {
 
   // retrieve the questions of the category the user wants to view
   getQuestions() {
-    return this.question;
+    console.log(this.questions)
+    return this.questions;
   }
   getAnswers() {
     return this.storedAnswers;
@@ -42,9 +43,12 @@ export class SurveyService {
     console.log(this.storedAnswers)
   }
   // stores the question to be viewed when the user clicks on view category
-  saveQuestions(category) {
-    this.question = category;
-    console.log(this.question)
+  saveQuestions(question) {
+    // this.questions['title'] = question['title'];
+    // this.questions['pages'] = question['pages']
+    this.questions = question
+    // this.test = question;
+    // // console.log(question)
   }
 
   // retrieves the saved questionaire
@@ -108,20 +112,20 @@ export class SurveyService {
     return this.http.post(this.json_url, questions);
   }
 
-  getSurv(id) {
+  // getSurv(id) {
 
-    this.http.get(this.category_url + id + '/').subscribe(cat => {
-      this.cats = cat
-      this.question.title = cat['name'];
-      this.question.pages = (this.cats.questionaire[0].pages);
-      // this.answers = this.cats[i]['answers'][0]['answer'];
+  //   this.http.get(this.category_url + id + '/').subscribe(cat => {
+  //     this.cats = cat
+  //     this.question.title = cat['name'];
+  //     this.question.pages = (this.cats.questionaire[0].pages);
+  //     // this.answers = this.cats[i]['answers'][0]['answer'];
 
-      // return this.question;
-    });
+  //     // return this.question;
+  //   });
 
-    // // console.log(this.question);
-    return this.question;
-  }
+  //   // // console.log(this.question);
+  //   return this.question;
+  // }
 
 }
 

@@ -18,6 +18,8 @@ import { ProfileComponent } from './components/usersPages/profile/profile.compon
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { AnswersService } from './services/answers.service';
+import { SurveyService } from './services/survey.service'
 import {AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptorService } from './services/tokeninterceptor.service';
@@ -30,7 +32,7 @@ import { EditsurveyComponent } from './components/admin/editsurvey/editsurvey.co
   declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent],
 
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
-  providers: [AuthService, AuthGuard,{
+  providers: [AnswersService, SurveyService, AuthService, AuthGuard,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
