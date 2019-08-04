@@ -59,8 +59,8 @@ export class SurveyComponent implements OnInit {
     // console.log(this.message)
     // console.log(this.onTaskValueChange)
     // console.log(this.surveyservice.getQuestions())
-    this.json = this.answerservice.getCategoryId();
-    console.log(this.json)
+    // this.json = this.answerservice.getCategoryId();
+    // console.log(this.json)
     this.cat_id = this.answerservice.getQuestions();
     console.log(this.cat_id)
     const surveyModel = new Survey.Model(this.cat_id);
@@ -96,8 +96,8 @@ export class SurveyComponent implements OnInit {
     surveyModel.onComplete.add((result) => {
       this.submitSurvey.emit(result.data);
       console.log(result.data)
-      console.log(this.surveyservice.getCategoryId())
-      this.answers['category'] = this.surveyservice.getCategoryId();
+      console.log(this.answerservice.getCategoryId())
+      this.answers['category'] = this.answerservice.getCategoryId();
       this.answers['school']= this.authService.getUserId();
       this.answers['answer'] = result.data;
       this.onSurveySaved(this.answers);
@@ -108,9 +108,13 @@ export class SurveyComponent implements OnInit {
   }
   onSurveySaved(survey) {
     console.log(survey);
-    this.surveyservice.saveAnswers(survey);
-
+    this.surveyservice.saveAnswers(survey).subscribe(res => {
+      console.log(res);
+    },
+    err => console.log(err)
+  );
   }
+
 
   savePDF() {
     var options = {

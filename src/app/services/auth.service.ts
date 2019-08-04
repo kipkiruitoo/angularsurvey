@@ -9,6 +9,7 @@ import { LoginComponent } from '../components/auth/login/login.component';
 })
 export class AuthService {
 
+  uId;
   user_id;
   role;
   private _registerUrl = 'http://127.0.0.1:8000/api/auth/register/';
@@ -42,7 +43,9 @@ export class AuthService {
     console.log(this.user_id);
   }
   getUserId() {
-    return this.user_id;
+    this.uId = localStorage.getItem('userId')
+    this.uId = JSON.parse(this.uId)
+    return this.uId;
   }
   getRole(id) {
     return this.http.get(this.user_url + id + '/');

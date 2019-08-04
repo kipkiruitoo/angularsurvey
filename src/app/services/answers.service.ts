@@ -54,9 +54,11 @@ export class AnswersService {
     for (var i = 0; i < this.questions.length; i++) {
       if (this.questions[i]['id'] === this.catId) {
         this.questionaire['title'] = this.questions[i]['name'];
+        console.log(this.questionaire['title'])
         this.questionaire['pages'] = this.questions[i]['questionaire'][0]['pages'];
         // this.ans1 = this.questions[i]['answers'][0]['answer'];
       }
+    console.log(this.questionaire)
     return this.questionaire
   }
 
