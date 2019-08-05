@@ -10,12 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewSurveysComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private surveyService: SurveyService,private answerservice: AnswersService ) { }
+  constructor(private route: ActivatedRoute, private surveyService: SurveyService, private answerservice: AnswersService) { }
 
   categories = [];
   question = { 'title': '', 'showProgressBar': 'top', 'pages': '' };
   cats;
   answers;
+  localid;
   // question;
   question1 = '';
   ngOnInit() {
@@ -33,7 +34,9 @@ export class ViewSurveysComponent implements OnInit {
       });
   }
   getQues(id) {
-    localStorage.setItem('categoryId',id);
+    localStorage.setItem('categoryId', id);
+    this.localid = localStorage.getItem('categoryId');
+    console.log(this.localid);
     for (var i = 0; i < this.cats.length; i++) {
       if (this.cats[i]['id'] === id) {
         this.question['title'] = this.cats[i]['name'];
@@ -42,6 +45,7 @@ export class ViewSurveysComponent implements OnInit {
         this.surveyService.setCategoryId(id);
         this.surveyService.storeAnswers(this.answers)
         this.answerservice.changeMessage(JSON.stringify(this.question))
+
         // this.surveyService.saveQuestions(this.question)
         // localStorage.setItem('categoryId',id);
       }
@@ -53,6 +57,6 @@ export class ViewSurveysComponent implements OnInit {
   getCats() {
     this.cats = this.categories[0];
     console.log(this.cats)
-    localStorage.setItem('question',JSON.stringify(this.cats));
+    localStorage.setItem('question', JSON.stringify(this.cats));
   }
 }

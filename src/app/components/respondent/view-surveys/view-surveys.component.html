@@ -36,7 +36,7 @@
           <p class="card-text">{{res.description}}</p>
           <!-- Link -->
           <!-- <button class="btn btn-white" (click)="getQues(res.id)" type="button">View Category</button> -->
-          <a  [routerLink]="['/survey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
+          <a [routerLink]="['/survey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
             <h5>View Category <i class="fas fa-angle-double-right"></i></h5>
           </a>
           <a [routerLink]="['/editSurvey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">

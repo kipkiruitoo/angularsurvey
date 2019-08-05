@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable,BehaviorSubject } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { Router } from '@angular/router';
+import { forEach } from '@angular/router/src/utils/collection';
+import { Question } from 'survey-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +23,9 @@ export class AnswersService {
 
   private messageSource = new BehaviorSubject('default message');
   currentMessage = this.messageSource.asObservable();
-  constructor(private http: HttpClient,private _router: Router) {
+  constructor(private http: HttpClient, private _router: Router) {
   }
-  saveAnswers(answer){
+  saveAnswers(answer) {
     this.answers = answer
     return this.http.post<any>(this.answers_url, this.answers);
   }
@@ -36,6 +38,7 @@ export class AnswersService {
   }
   changeMessage(message: string) {
     this.messageSource.next(message)
+    localStorage.setItem('question', message);
     console.log(this.currentMessage)
   }
   getCategoryId() {
@@ -49,20 +52,24 @@ export class AnswersService {
   getQuestions() {
     this.catIdString = localStorage.getItem('categoryId');
     this.catId = JSON.parse(this.catIdString);
+    console.log(this.catId);
     this.questionString = localStorage.getItem('question');
     this.questions = JSON.parse(this.questionString)
+    console.log(this.questions);
+
     for (var i = 0; i < this.questions.length; i++) {
-      if (this.questions[i]['id'] === this.catId) {
+      if (this.questions[i].id == JSON.parse(localStorage.getItem('categoryId'))) {
         this.questionaire['title'] = this.questions[i]['name'];
         console.log(this.questionaire['title'])
         this.questionaire['pages'] = this.questions[i]['questionaire'][0]['pages'];
-        // this.ans1 = this.questions[i]['answers'][0]['answer'];
+        // this.questionaire[] = this.questions[i]['answers'][0]['answer'];
+        return this.questionaire
       }
-    console.log(this.questionaire)
-    return this.questionaire
-  }
 
-}
+
+    }
+
+  }
 }
 //  this.json = {
 //       pages: [

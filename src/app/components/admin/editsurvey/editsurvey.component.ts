@@ -35,11 +35,11 @@ export class EditsurveyComponent implements OnInit {
   answer;
   category;
   school;
-  answers = {'school': 0 ,'category':0,'answer':''};
-  constructor(private answerservice: AnswersService,private surveyservice: SurveyService,private authService: AuthService) { }
+  answers = { 'school': 0, 'category': 0, 'answer': '' };
+  constructor(private answerservice: AnswersService, private surveyservice: SurveyService, private authService: AuthService) { }
 
   ngOnInit() {
-    this.json = this.surveyservice.getQuestions();
+    this.json = this.answerservice.getQuestions();
     console.log(this.json)
     this.answer = this.surveyservice.getAnswers();
     const surveyModel = new Survey.Model(this.json);
@@ -56,7 +56,7 @@ export class EditsurveyComponent implements OnInit {
       btn.className = "btn btn-info btn-xs";
       btn.innerHTML = "More Info";
       const question = options.question;
-      btn.onclick = function() {
+      btn.onclick = function () {
         // showDescription(question);
         alert(options.question.popupdescription);
       };
@@ -84,6 +84,6 @@ export class EditsurveyComponent implements OnInit {
         res => console.log(res),
         err => console.log(err)
       );
-      }
+  }
 
 }

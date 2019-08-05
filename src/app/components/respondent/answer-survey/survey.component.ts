@@ -37,11 +37,11 @@ export class SurveyComponent implements OnInit {
   cat_id;
   json;
   question = { 'title': '', 'showProgressBar': 'top', 'pages': '' };
-  answers = {'school':'','category':'','answer':''};
+  answers = { 'school': '', 'category': '', 'answer': '' };
   message;
 
 
-  constructor(private surveyservice: SurveyService, private route: ActivatedRoute, private authService: AuthService,private answerservice: AnswersService ) {
+  constructor(private surveyservice: SurveyService, private route: ActivatedRoute, private authService: AuthService, private answerservice: AnswersService) {
     // this.route.params.subscribe(params => {
     //   console.log(params.id),
     //     this.cat_id = params.id
@@ -97,8 +97,8 @@ export class SurveyComponent implements OnInit {
       this.submitSurvey.emit(result.data);
       console.log(result.data)
       console.log(this.answerservice.getCategoryId())
-      this.answers['category'] = this.answerservice.getCategoryId();
-      this.answers['school']= this.authService.getUserId();
+      this.answers['category'] = 'http://127.0.0.1:8000/survey/categories/' + this.answerservice.getCategoryId() + '/';
+      this.answers['school'] = "http://localhost:8000/api/users/" + localStorage.getItem('user') + '/';
       this.answers['answer'] = result.data;
       this.onSurveySaved(this.answers);
 
@@ -111,8 +111,8 @@ export class SurveyComponent implements OnInit {
     this.surveyservice.saveAnswers(survey).subscribe(res => {
       console.log(res);
     },
-    err => console.log(err)
-  );
+      err => console.log(err)
+    );
   }
 
 
