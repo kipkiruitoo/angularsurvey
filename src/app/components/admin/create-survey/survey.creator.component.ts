@@ -53,6 +53,7 @@ export class SurveyCreatorComponent {
   public data = { "pages": "" };
   page = this.data.pages
   cat_id;
+  categories = [];
 
   category = { "name": '', "description": '' };
   @Output() surveySaved: EventEmitter<Object> = new EventEmitter();
@@ -108,7 +109,18 @@ export class SurveyCreatorComponent {
 
       this.surveyservice.postQuestionnaire(this.json).subscribe(res => {
         console.log(res);
+        this.surveyservice.getCategory()
+          .subscribe(
+            res => {
+              this.categories.push(res),
+                console.log(this.categories);
+              localStorage.setItem('question', JSON.stringify(this.categories[0]))
+            },
+            err => console.log(err)
+          );
       })
+
+
 
     })
   }

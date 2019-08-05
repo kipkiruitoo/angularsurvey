@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row up">
+        <div class="col-md-6 offset-md-3">
+          <button class="btn btn-primary" (click)="add()">Add a new Category</button>
+        </div>
+
+      </div>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Category #</th>
+              <th>Category name</th>
+              <th>Category Description</th>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let question of questions">
+              <td>
+                {{question.id}}
+              </td>
+              <td>
+                {{question.name}}
+              </td>
+              <td>
+                {{question.description}}
+              </td>
+              <td>
+                <a id="edit" class="btn btn-primary" (click)="editCategory(question.id)">Edit</a>
+                <a id="delete" class="btn btn-danger">Delete</a>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

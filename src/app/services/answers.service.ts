@@ -70,6 +70,26 @@ export class AnswersService {
     }
 
   }
+  getSurvey() {
+    this.catIdString = localStorage.getItem('categoryedit');
+    this.catId = JSON.parse(this.catIdString);
+    console.log(this.catId);
+    this.questionString = localStorage.getItem('question');
+    this.questions = JSON.parse(this.questionString)
+    console.log(this.questions);
+
+    for (var i = 0; i < this.questions.length; i++) {
+      if (this.questions[i].id == JSON.parse(localStorage.getItem('categoryedit'))) {
+        this.questionaire['title'] = this.questions[i]['name'];
+        console.log(this.questionaire['title'])
+        this.questionaire['pages'] = this.questions[i]['questionaire'][0]['pages'];
+        // this.questionaire[] = this.questions[i]['answers'][0]['answer'];
+        return this.questionaire
+      }
+
+
+    }
+  }
 }
 //  this.json = {
 //       pages: [

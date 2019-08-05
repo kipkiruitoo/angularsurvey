@@ -9,7 +9,7 @@ import { ProfileComponent } from "../components/usersPages/profile/profile.compo
 import { AdminComponent } from "../components/admin/admin/admin.component";
 import { ViewSurveysComponent } from '../components/respondent/view-surveys/view-surveys.component';
 import { EditsurveyComponent } from '../components/admin/editsurvey/editsurvey.component';
-
+import { CategoryIndexComponent } from '../components/category-index/category-index.component';
 
 import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -51,6 +51,10 @@ const routes: Routes = [
   {
     path: "createsurvey",
     component: SurveyCreatorComponent
+  },
+  {
+    path: "surveys",
+    component: CategoryIndexComponent
   },
   {
     path: "editsurvey",

@@ -23,9 +23,12 @@ export class SurveyService {
   categoryId;
   questions = { 'title': '', 'showProgressBar': 'top', 'pages': '' };
   category = { "name": '', "description": '' };
-  test={};
+  test = {};
   answers;
+  editid;
   cats;
+
+  categories = [];
   storedAnswers;
 
   constructor(private http: HttpClient) { }
@@ -86,7 +89,7 @@ export class SurveyService {
   // store the categoryId for the questionaire being answered
   setCategoryId(id) {
     this.categoryId = id;
-    localStorage.setItem('categoryId',this.categoryId)
+    localStorage.setItem('categoryId', this.categoryId)
   }
 
   // get request for retrieving all the categories
@@ -106,10 +109,20 @@ export class SurveyService {
 
 
   }
+  putCategory(category) {
+
+    this.editid = localStorage.getItem('categoryedit');
+    return this.http.patch<any>(this.category_url + this.editid + '/', category);
+  }
 
   postQuestionnaire(questions) {
 
     return this.http.post(this.json_url, questions);
+  }
+  putQuestionnaire(questions) {
+    this.editid = localStorage.getItem('categoryedit');
+    return this.http.patch(this.json_url + this.editid + '/', questions);
+
   }
 
   // getSurv(id) {
