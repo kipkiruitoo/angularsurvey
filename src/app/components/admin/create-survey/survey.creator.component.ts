@@ -42,6 +42,7 @@ SurveyCreator.SurveyPropertyModalEditor.registerCustomWidget(
   CkEditor_ModalEditor
 );
 
+
 @Component({
   selector: "survey-creator",
   templateUrl: "./create-survey.component.html"

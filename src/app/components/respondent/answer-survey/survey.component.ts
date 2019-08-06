@@ -93,6 +93,7 @@ export class SurveyComponent implements OnInit {
       this.answers['category'] = 'http://127.0.0.1:8000/survey/categories/' + this.answerservice.getCategoryId() + '/';
       this.answers['school'] = "http://localhost:8000/api/users/" + localStorage.getItem('userId') + '/';
       this.answers['answer'] = result.data;
+      this.result = result.data;
       this.onSurveySaved(this.answers);
 
     });
@@ -103,7 +104,7 @@ export class SurveyComponent implements OnInit {
     console.log(survey);
     this.surveyservice.saveAnswers(survey).subscribe(res => {
       console.log(res);
-      thi
+
     },
       err => console.log(err)
     );
@@ -120,7 +121,7 @@ export class SurveyComponent implements OnInit {
         bot: 10
       }
     };
-    const surveyPDF = new SurveyPDF.Survey(this.json, options);
+    const surveyPDF = new SurveyPDF.Survey(this.cat_id, options);
     console.log(this.result);
     surveyPDF.data = this.result;
     surveyPDF.save("survey PDF example");

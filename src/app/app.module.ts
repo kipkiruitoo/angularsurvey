@@ -28,10 +28,11 @@ import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-si
 import { ViewSurveysComponent } from './components/respondent/view-surveys/view-surveys.component';
 import { EditsurveyComponent } from './components/admin/editsurvey/editsurvey.component';
 import { EditAnswerComponent } from './components/respondent/edit-answer/edit-answer.component'
-import { CategoryIndexComponent } from './components/category-index/category-index.component'
+import { CategoryIndexComponent } from './components/category-index/category-index.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
 
 @NgModule({
-  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent,EditAnswerComponent],
+  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent,EditAnswerComponent, SidemenuComponent],
 
 
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],

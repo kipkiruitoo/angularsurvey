@@ -39,6 +39,8 @@ export class CategoryIndexComponent implements OnInit {
             localStorage.setItem('question', JSON.stringify(this.categories[0]))
 
             this._router.navigate(['surveys'])
+            location.reload();
+
           },
           err => console.log(err)
         );
