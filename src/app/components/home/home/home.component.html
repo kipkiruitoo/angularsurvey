@@ -1,124 +1,401 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12" style="height: 100px; background-color: transparent;">
-    </div>
-    <div class="col-md-12"
-      style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-size: 70px;
-        text-align: center;
-        color: orange;
-        background-color: transparent">
-      <b>GREAT PLACES TO SCHOOL</b>
-    </div>
+<div class="container mt-5">
+  <div class="row" style="height: 30px; background-color: transparent;">
   </div>
-  <div class="row">
-    <div class="col-md-12" style="height: 210px">
-      <div class="col-md-6"
-        style="height: 150px;
-        background-color:transparent;
-        font-size: 20px">
-        <div [ngStyle]="{'background' : 'url(data:image/png;base64,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)'}"
-          class="col-md-12"
-          style="height: 215px; width: 225px">
+  <div id="carouselExampleIndicators" class="carousel slide mb-0 mt-4" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background: url('/assets/custom – 1.png') ;background-size: cover; ">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4"></h2>
+          <!-- <p class="lead"></p> -->
         </div>
-        <p class="center">Over 500 schools verified across the nation</p>
       </div>
-      <div class="col-md-6"
-        style="height: 150px;
-        background-color: transparent;
-        font-size: 20px">
-        <div [ngStyle]="{'background' : 'url(data:image/jpeg;base64,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)'}"
-          class="col-md-12"
-          style="height: 190px; width: 230px">
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background: url('/assets/carousel2.jpg');background-size: cover; ">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4" style="color:#F48637"></h2>
+          <p class="lead">Some of Last year's Winners during the'Great Places to School' gala Dinner at Safari Park
+            Hotel, Nairobi.</p>
         </div>
-        <p class="center">Over 2000 families have their loved ones in safer schools</p>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('/assets/standard group.jpg')">
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="display-4"></h2>
+          <p class="lead">Standard Group CEO Orlando Lyomu (Right) with representatives of Makini Schools, who won in
+            two categories during the 'Great Places to School' gala Dinner at Safari Park Hotel, Nairobi. </p>
+        </div>
       </div>
     </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-  <hr style="width: 80%;"><br>
 
-  <h1 style="text-align: center">HOW WE WORK</h1><br>
-  <div class="row">
-    <div class="col-md-5" style="background-color: transparent; height: 250px;">
-      <div [ngStyle]="{'background' : 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlUdiJj_3d40dy7WSQbvSiK15FDZBtEeP4fkEtm77e1W7eYHlp)'}"
-        class="col-md-12"
-        style="height: 215px; width: 225px">
+
+  <div class="row mt-4 d-flex justify-content-center">
+    <div class="col-md-10" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          font-size: 32px;
+          margin-top: 80px;
+          text-align: center;
+          color: #F48637;
+          background-color: transparent">
+      <b>Why Great Places to School?</b>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10" style="
+            font-size: 16px;
+            text-align: center;
+            color: #333;
+            background-color: transparent">
+        <p>“Students spend most of their formative years in schools, and it is critical that schools offer a vital opportunity to ensure that they get the support required to reach their full potential.</p>
       </div>
     </div>
-    <div class="col-md-6"
-      style="font-size: 20px">
-      <h2>First: <a href="#">Contact Us</a></h2>
-      <p>Contact us via Email or Phone with info about your school
-        and we match the most suitable qualified verifier for your school
-      </p>
+
+  </div>
+
+
+
+
+
+  <div class="row mt-4 d-flex justify-content-center">
+    <div class="col-md-10" style="
+        margin-top: 40px;
+        font-size: 32px;
+        text-align: center;
+        color: #F48637;
+        background-color: transparent">
+      <b>What We Do </b>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10" style="
+          font-size: 16px;
+          text-align: center;
+          color: #333;
+          background-color: transparent">
+
+        <p>We are an impact-driven initiative who identify, rate and recognize schools whose innovative learning environment and overall school culture contribute to the wholesome development of our children.</p>
+        <p>  We have bridged the gap by launching a forum that calls for entries from schools in Kenya, verify them within different categories, rank them, and fete them, based on what they offer our students."</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="row mt-4 d-flex justify-content-center">
+    <div class="col-md-6" style="
+        margin-top: 60px;
+        font-size: 32px;
+          text-align: center;
+          color: #F48637;
+          background-color: transparent">
+      <b>Why you should participate</b>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6"
-      style="font-size: 20px">
-      <h2>Verifier comes to your school</h2>
-      <p>We sent the most qualified verifier to your school to verify the informatio
-        given on your application
-      </p>
-    </div>
-    <div class="col-md-5" style="background-color: transparent; height: 250px;">
-      <div [ngStyle]="{'background' : 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZHbqTWb-8gesKouh1sjcVwCUETuJ3b2ZfbiUTER8f7upD-rT)'}"
-        class="col-md-12"
-        style="height: 200px; width: 225px">
+  <div class="bs-example" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;">
+    <div class="accordion bg-white" id="accordionExample">
+      <div class="card ">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button type="button" class="btn btn-link" style="
+                      font-size: 20px; color:#F48637;" data-toggle="collapse" data-target="#collapseOne"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Know Your
+              School Better</button>
+          </h2>
+        </div>
+        <div id="collapseOne" class="collapse" style="
+        font-size: 16px;" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Know what is working best for your School</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button type="button" class="btn btn-link" style="
+                      font-size: 20px; color:#F48637;" data-toggle="collapse" data-target="#collapseTwo"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Assess and
+              Benchmark Your School</button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" style="
+        font-size: 16px;" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Assess and benchmark your school culture and be able to identify the gaps and how to best transform your
+              school. Global Peace Foundation resource materials identify the loop holes and provide a roadmap on how to
+              improve – all in metrics that are easy to understand.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h2 class="mb-0">
+            <button type="button" class="btn btn-link" style="
+                      font-size: 20px; color:#F48637;" data-toggle="collapse" data-target="#collapseThree"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Earn
+              National Recognition</button>
+          </h2>
+        </div>
+        <div id="collapseThree" class="collapse" style="
+        font-size: 16px;" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Earn National Recognition from Education Stakeholders and the Ministry of Education Character and
+              Creativity Certified Schools have the chance to brand themselves as transformative schools with an
+              inviting school climate by ranking on our prestigious top 100 Best Places to School index annually.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFour">
+          <h2 class="mb-0">
+            <button type="button" class="btn btn-link" style="
+                      font-size: 20px; color:#F48637;" data-toggle="collapse" data-target="#collapseFour"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>Grow Your
+              Brand</button>
+          </h2>
+        </div>
+        <div id="collapseFour" class="collapse" style="
+        font-size: 16px;" aria-labelledby="headingFour" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Grow Your Brand as the Best Place to School: Brand yourself as a school that champions virtues of
+              Honesty, Integrity, Respect, Humility, Peace and Unity. Our Certification will give you the marketing
+              resources to build brand recognition and the actionable insights to drive a transformed school culture.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-5" style="background-color: transparent; height: 250px;">
-      <div [ngStyle]="{'background' : 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4egISQhog0JJjGHHke6cZE7Nbr3BLcA3foWDv7ovzU9n3nm6B)'}"
-        class="col-md-12"
-        style="height: 190px; width: 270px">
+  <div class="row mt-4 d-flex justify-content-center">
+    <div class="col-md-6" style="
+          font-size: 32px;
+          text-align: center;
+          color: #F48637;
+          background-color: transparent">
+      <b>What are Indicators of Great Places to School?</b>
+    </div>
+  </div>
+  <div class="row mb-auto d-flex justify-content-around">
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>STEM (Science, Technology, Engineering & Mathematics)</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/stem.jpg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> Juja Preparatory and Senior Schools</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Sacho High School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> M-pesa Foundation Academy</i></p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-6"
-      style="font-size: 20px">
-      <h2>Waiting for rankings</h2>
-      <p>Keep calm and wait for the ranking
-      </p>
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>Talent Development (Music, Dance, Art, Drama, and Sports)</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/sports drama music.jpg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> Makini Schools</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Greensteds International School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Laiser Hill Academy, Ongata Rongai</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>Business/Entrepreneurship projects</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/entrepreneurship.png" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> M-pesa Foundation</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Kibera Girls’ Soccer School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Rusinga Schools</i></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row foot">
-    <div class="col-md-4">
-      <!-- <p style="color: rgb(27, 27, 27)">test</p> -->
-      <!-- <p>Information</p> -->
-      <p><a href="#">About Us</a></p>
-      <p><a href="#">Register your school</a></p>
-      <p><a href="#">Testimonial &</a></p>
-      <p><a href="#">Reviews</a></p>
-    </div>
-    <div class="col-md-4">
-      <!-- <p style="color: rgb(27, 27, 27)">test</p> -->
-      <p><a href="#">Homes of education</a></p>
-      <p><a href="#">Performances</a></p>
-      <p><a href="#">Happy clients</a></p>
-      <p><a href="#">Helpful clients</a></p>
-    </div>
-    <div class="col-md-4">
-      <!-- <p style="color: rgb(27, 27, 27)">test</p> -->
-      <p>Contact Us</p>
-      <P>0700 874 584</P>
-      <p>gpts@gmail.com</p>
-      <p><a href="#">Schools</a></p>
-    </div>
-    <!-- <div class="col-md-3">
-      <p>Talk To Us</p>
-      <form class="form-signin">
-        <div class="form-label-group">
-          <input type="text" id="inputEmail" class="form-control" placeholder="Email address" name="email"  required autofocus>
-        </div>
-        <div class="form-label-group">
-          <input type="text" id="inputUsername" class="form-control" placeholder="Username"  name="username"required>
-        </div>
-        <div class="form-label-group">
-          <textarea placeholder="About" id="inputAbout" class="form-control"  name="about"required></textarea>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="button">Submit</button>
-      </form>
-    </div> -->
+  <div class="row" style="height: 100px; background-color: transparent;">
   </div>
-</div>
+  <div class="row mt-auto mb-auto d-flex justify-content-around">
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>Governance</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/ipsiring-governance-1.jpg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> Laiser Hill Academy, Ongata Rongai</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> The Excellence School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Rusinga School</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>Career development</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/career-path-development.jpg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> Crawford International School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Oshwal Academy, Mombasa</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Rusinga Schools</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>Character & creativity</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/character.jpg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> Makini School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Clay International</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Greensteds International School</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="height: 50px; background-color: transparent;">
+  </div>
+  <div class="row mt-5  d-flex justify-content-around">
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>Academics</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/academics.jpg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> Crawford International School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Lukenya Academy IGCSE (British Curriculum)</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Rusinga Schools</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="flip-card">
+        <p style="font-size: 20px;"><b>Safety & security</b></p>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/assets/safety.png" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h4 style="text-decoration: underline;">LAST YEAR'S WINNERS IN THIS CATEGORY</h4>
+            <p><i class="fa fa-trophy" aria-hidden="true"> Greensteds International School</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Juja Preparatory and Senior Schools</i></p>
+            <p><i class="fa fa-certificate" aria-hidden="true"> Graceland Girls’ Senior School</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="height: 50px; background-color: transparent;">
+  </div>
+  <div class="row mt-auto mb-5 d-flex justify-content-around">
+    <div class="col-lg-8 mx-auto text-center" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          font-size: 32px;
+          text-align: center;
+          color: #F48637;
+          background-color: transparent">
+
+      <b>Great Places to School in the Media</b>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 resp-container">
+      <iframe class="resp-iframe" width="460" height="215" src="https://www.youtube.com/embed/fYETQ3OLELQ"
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="col-md-6 resp-container">
+      <iframe class="resp-iframe" width="460" height="215" src="https://www.youtube.com/embed/gumf5vHy980"
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+
+    </div>
+  </div>
+  <div class="row" style="height: 50px; background-color: transparent;">
+  </div>
+  <div class="row mt-auto mb-5 d-flex justify-content-around">
+    <div class="col-lg-8 mx-auto text-center" style="
+      font-size: 32px;
+      text-align: center;
+      color: #F48637;
+      background-color: transparent">
+      <b>Great Places to School Partners</b>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 resp-container">
+      <img src="/assets/partners.png" class="img-responsive" width="100%" alt="" srcset="">
+    </div>
+  </div>
+  <div class="row" style="height: 50px; background-color: transparent;">
+  </div>
+  <div class="row mt-auto mb-5 d-flex justify-content-around contact">
+    <div class="col-lg-8 mx-auto text-center" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: 28px;
+      text-align: center;
+      color: #F48637;
+      background-color: transparent">
+      <b>Interested?</b><br>
+      <p>Get In Touch and we can have a chat about how GTPS will benefit your school</p>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <b style="text-decoration: underline;">Contact ANNIE</b>
+  </div>
+  <div class="row mt-auto mb-5 d-flex justify-content-around">
+    <div class="col-md-3">
+      <p><i class="fa fa-phone" aria-hidden="true"></i>+254-703-144103</p>
+    </div>
+    <div class="col-md-4">
+      <p><i class="fa fa-envelope" aria-hidden="true"></i>greatplacestoschool@standardmedia.co.ke</p>
+    </div>
+  </div>
+  <footer id="sticky-footer" class="py-4 bg-white text-dark-50 ">
+    <div class="container text-center">
+      <small style="color:#F48637;">Copyright &copy; GPTS</small>
+    </div>
+  </footer>
+
+
+

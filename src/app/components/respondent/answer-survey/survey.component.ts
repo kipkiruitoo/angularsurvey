@@ -54,13 +54,6 @@ export class SurveyComponent implements OnInit {
 
   result: any;
   ngOnInit() {
-    // this.question.title = localStorage.get
-    // this.answerservice.currentMessage.subscribe(message => this.message = message)
-    // console.log(this.message)
-    // console.log(this.onTaskValueChange)
-    // console.log(this.surveyservice.getQuestions())
-    // this.json = this.answerservice.getCategoryId();
-    // console.log(this.json)
     this.cat_id = this.answerservice.getQuestions();
     console.log(this.cat_id)
     const surveyModel = new Survey.Model(this.cat_id);
@@ -98,7 +91,7 @@ export class SurveyComponent implements OnInit {
       console.log(result.data)
       console.log(this.answerservice.getCategoryId())
       this.answers['category'] = 'http://127.0.0.1:8000/survey/categories/' + this.answerservice.getCategoryId() + '/';
-      this.answers['school'] = "http://localhost:8000/api/users/" + localStorage.getItem('user') + '/';
+      this.answers['school'] = "http://localhost:8000/api/users/" + localStorage.getItem('userId') + '/';
       this.answers['answer'] = result.data;
       this.onSurveySaved(this.answers);
 
@@ -110,6 +103,7 @@ export class SurveyComponent implements OnInit {
     console.log(survey);
     this.surveyservice.saveAnswers(survey).subscribe(res => {
       console.log(res);
+      thi
     },
       err => console.log(err)
     );

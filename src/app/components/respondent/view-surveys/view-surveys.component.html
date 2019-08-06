@@ -1,5 +1,6 @@
 <div class="container-fluid">
-
+    <div class="row" style="height: 100px; background-color: transparent;">
+      </div>
   <div class="moreHeader row">
     <div class="col-xs-6">
       <div class="btn-group ">
@@ -39,14 +40,12 @@
           <a [routerLink]="['/survey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
             <h5>View Category <i class="fas fa-angle-double-right"></i></h5>
           </a>
-          <a [routerLink]="['/editSurvey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
+          <a [routerLink]="['/editanswer']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
             <h5>View Answers <i class="fas fa-angle-double-right"></i></h5>
           </a>
         </div>
       </div>
-      <!-- Card Light -->
     </div>
   </div>
 </section>
-<!-- </section> -->
-<!-- [routerLink]="['/survey']" -->
+

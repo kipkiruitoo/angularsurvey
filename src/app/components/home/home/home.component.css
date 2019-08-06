@@ -1,4 +1,4 @@
-.foot{
+.foot {
   width: 100%;
   position: bottom;
   left: 0;
@@ -7,4 +7,94 @@
   color: white;
   text-align: center;
   padding: 5px;
+}
+
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  width:100%;
+  /* background-size: auto; */
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.slide {
+  /* height: 200px; */
+  /* background: url("http://placehold.it/800x800/FF00FF") no-repeat #21639e; */
+  border-radius: 100%/0 0 100px 100px;
+  box-shadow: 0px 10px 0px #F48637;
+}
+
+.contact {
+  border-top: solid #F48637 1px;
+  /* border-top-left-radius:  40%;
+  border-top-right-radius: 40%; */
+  /* box-shadow: 10px 0px 0px #F48637; */
+}
+
+#sticky-footer {
+  border-top: solid #F48637 1px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  border-radius: 30%;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.lead {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  border-radius: 30px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  border-radius: 20px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  padding: 10px;
+  background-color: #F48637;
+  text-align: left;
+  color: #000000;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back p i {
+  padding: 15px;
+
+}
+
+#loginBtn {
+  background-color: #F48637;
 }

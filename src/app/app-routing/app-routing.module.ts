@@ -8,6 +8,7 @@ import { RegisterComponent } from "../components/auth/register/register.componen
 import { ProfileComponent } from "../components/usersPages/profile/profile.component"
 import { AdminComponent } from "../components/admin/admin/admin.component";
 import { ViewSurveysComponent } from '../components/respondent/view-surveys/view-surveys.component';
+import { EditAnswerComponent } from '../components/respondent/edit-answer/edit-answer.component';
 import { EditsurveyComponent } from '../components/admin/editsurvey/editsurvey.component';
 import { CategoryIndexComponent } from '../components/category-index/category-index.component';
 
@@ -17,8 +18,13 @@ import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: "editSurvey",
+    path: "editsurvey",
     component: EditsurveyComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "editanswer",
+    component: EditAnswerComponent,
     canActivate: [AuthGuard]
   },
   {

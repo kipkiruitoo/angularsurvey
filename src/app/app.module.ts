@@ -27,11 +27,12 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
 import { ViewSurveysComponent } from './components/respondent/view-surveys/view-surveys.component';
 import { EditsurveyComponent } from './components/admin/editsurvey/editsurvey.component';
-
+import { EditAnswerComponent } from './components/respondent/edit-answer/edit-answer.component'
 import { CategoryIndexComponent } from './components/category-index/category-index.component'
 
 @NgModule({
-  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent],
+  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent,EditAnswerComponent],
+
 
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [AnswersService, SurveyService, AuthService, AuthGuard, {
