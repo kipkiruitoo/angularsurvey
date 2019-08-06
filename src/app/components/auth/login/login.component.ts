@@ -50,11 +50,11 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.role = user['groups'][0].name;
             console.log("this is the role returned" + this.role)
 
-            if (user['groups'][0].name == "Scripters") {
+            if (user['groups'][0].name == "Scripter") {
               console.log("redirect to scripter")
               // console.log(this.role);
-              this._router.navigate(['createsurvey']);
-            } else if (user['groups'][0].name == "Respondents") {
+              this._router.navigate(['surveys']);
+            } else if (user['groups'][0].name == "Respondent") {
               this._router.navigate(['viewsurvey']);
             } else if (user['groups'][0].name == "Administrator") {
               this._router.navigate(['admin']);

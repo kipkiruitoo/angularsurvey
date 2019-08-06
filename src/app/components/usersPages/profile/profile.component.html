@@ -7,12 +7,12 @@
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="username" [(ngModel)]="user.username" id="name"
-              placeholder="john Doe">
+              placeholder="Name of the School">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" name="email" [(ngModel)]="user.email" id="exampleInputEmail1"
-              aria-describedby="emailHelp" placeholder="Enter email">
+              aria-describedby="emailHelp" placeholder="Schools email adress">
 
           </div>
           <div class="form-group">
@@ -21,21 +21,26 @@
               placeholder="County">
           </div>
           <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" name="address" [(ngModel)]="profile.address" id="county"
-              id="address" placeholder="Address">
+            <label for="county">Telephone Number</label>
+            <input type="text" class="form-control" name="telephone" [(ngModel)]="profile.telephone" id="telephone"
+              placeholder="Schools Telephone Number">
           </div>
-
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" name="postaladdress" [(ngModel)]="profile.postaladdress" id="county"
+              id="address" placeholder="Postal Address of the school">
+          </div>
+          <!-- 
           <div class="form-group">
             <label for="city">city</label>
             <input type="text" class="form-control" name="city" [(ngModel)]="profile.city" id="county" id="city"
               placeholder="Nairobi, Kisumu">
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group">
             <label for="zip">zip</label>
             <input type="text" class="form-control" name="zip" [(ngModel)]="profile.zip" id="county" id="zip"
               placeholder="Zip Code">
-          </div>
+          </div> -->
           <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
       </div>

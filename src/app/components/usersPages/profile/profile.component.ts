@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   });
   profile = { user: "", dob: "", city: "", address: "", county: "", zip: "" };
   user: any;
-  id = 2;
+  id;
   username;
   email;
   county;
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   zip;
   isloading = true;
   ngOnInit() {
-
+    this.id = localStorage.getItem('user');
 
     this.prof.getProfile(this.id).subscribe(profile => {
       this.profile = profile
