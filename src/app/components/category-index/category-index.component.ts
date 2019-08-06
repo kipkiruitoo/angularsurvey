@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-
+import { SurveyService } from '../../services/survey.service';
 @Component({
   selector: 'app-category-index',
   templateUrl: './category-index.component.html',
@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 })
 export class CategoryIndexComponent implements OnInit {
 
-  constructor(private _router: Router, ) { }
+  constructor(private _router: Router, private surveyservice: SurveyService) { }
 
   questions: any;
+  categories = [];
   ngOnInit() {
     this.questions = JSON.parse(localStorage.getItem('question'));
     console.log(this.questions)
@@ -26,6 +27,23 @@ export class CategoryIndexComponent implements OnInit {
     console.log('add')
     this._router.navigate(['createsurvey']);
 
+  }
+  delete(id) {
+    this.surveyservice.deleteCategory(id).subscribe(res => {
+      console.log(res)
+      this.surveyservice.getCategory()
+        .subscribe(
+          res => {
+            this.categories.push(res),
+              console.log(this.categories);
+            localStorage.setItem('question', JSON.stringify(this.categories[0]))
+
+            this._router.navigate(['surveys'])
+          },
+          err => console.log(err)
+        );
+
+    })
   }
 
 }

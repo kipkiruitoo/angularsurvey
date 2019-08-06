@@ -124,6 +124,10 @@ export class SurveyService {
     return this.http.patch(this.json_url + this.editid + '/', questions);
 
   }
+  deleteCategory(id) {
+
+    return this.http.delete(this.category_url + id + '/');
+  }
 
   // getSurv(id) {
 

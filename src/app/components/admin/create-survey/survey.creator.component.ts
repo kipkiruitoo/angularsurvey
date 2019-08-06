@@ -3,6 +3,7 @@ import * as SurveyKo from "survey-knockout";
 import * as SurveyCreator from "survey-creator";
 import * as widgets from "surveyjs-widgets";
 import { SurveyService } from "../../../services/survey.service";
+import { Router } from '@angular/router';
 
 import "inputmask/dist/inputmask/phone-codes/phone.js";
 import { Observable } from "rxjs";
@@ -47,7 +48,7 @@ SurveyCreator.SurveyPropertyModalEditor.registerCustomWidget(
 })
 export class SurveyCreatorComponent {
   surveyCreator: SurveyCreator.SurveyCreator;
-  constructor(private surveyservice: SurveyService) { }
+  constructor(private surveyservice: SurveyService, private _router: Router, ) { }
 
   json;
   public data = { "pages": "" };
@@ -115,6 +116,7 @@ export class SurveyCreatorComponent {
               this.categories.push(res),
                 console.log(this.categories);
               localStorage.setItem('question', JSON.stringify(this.categories[0]))
+              location.reload();
             },
             err => console.log(err)
           );
