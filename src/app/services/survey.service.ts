@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class SurveyService {
   // Url for questionaires endpoint
-  private json_url = 'http://127.0.0.1:8000/survey/questionaires/';
+  private json_url = 'https://kipkiruitoo.pythonanywhere.com/survey/questionaires/';
   // Url for categories endpoint
-  private category_url = 'http://127.0.0.1:8000/survey/categories/';
-  private answers_url = 'http://127.0.0.1:8000/survey/answers/';
+  private category_url = 'https://kipkiruitoo.pythonanywhere.com/survey/categories/';
+  private answers_url = 'https://kipkiruitoo.pythonanywhere.com/survey/answers/';
 
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json"

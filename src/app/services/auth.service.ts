@@ -12,9 +12,9 @@ export class AuthService {
   uId;
   user_id;
   role;
-  private _registerUrl = 'http://127.0.0.1:8000/api/auth/register/';
-  private _loginUrl = 'http://127.0.0.1:8000/api/auth/login/';
-  user_url = "http://localhost:8000/api/users/";
+  private _registerUrl = 'https://kipkiruitoo.pythonanywhere.com/api/auth/register/';
+  private _loginUrl = 'https://kipkiruitoo.pythonanywhere.com/api/auth/login/';
+  user_url = "https://kipkiruitoo.pythonanywhere.com/api/users/";
   constructor(private http: HttpClient,
     private _router: Router) { }
 
@@ -40,7 +40,7 @@ export class AuthService {
   }
   saveUserId(id) {
     this.user_id = id;
-    localStorage.setItem('userId',this.user_id)
+    localStorage.setItem('userId', this.user_id)
     console.log(this.user_id);
   }
   getUserId() {

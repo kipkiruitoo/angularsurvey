@@ -15,7 +15,7 @@ const httpOptions = {
 export class ProfileService {
 
 
-  profileurl = "http://localhost:8000/api/profile/"
+  profileurl = "https://kipkiruitoo.pythonanywhere.com/api/profile/"
   constructor(private http: HttpClient) {
 
 

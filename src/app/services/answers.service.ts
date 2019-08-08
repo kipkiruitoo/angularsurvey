@@ -9,7 +9,7 @@ import { Question } from 'survey-angular';
   providedIn: 'root'
 })
 export class AnswersService {
-  private answers_url = 'http://127.0.0.1:8000/survey/answers/';
+  private answers_url = 'http://kipkiruitoo.pythonanywhere.com/survey/answers/';
   json;
   answers;
   answer;
@@ -32,7 +32,7 @@ export class AnswersService {
     this.ansId = localStorage.getItem('answerId');
     this.ansId2 = JSON.parse(this.ansId);
     this.answers = answer
-    return this.http.patch<any>('http://127.0.0.1:8000/survey/answers/' + this.ansId2 + '/', this.answers);
+    return this.http.patch<any>('http://kipkiruitoo.pythonanywhere.com/survey/answers/' + this.ansId2 + '/', this.answers);
   }
   // getQuestions() {
 
@@ -45,7 +45,7 @@ export class AnswersService {
     console.log(this.ans)
     return this.ans2;
   }
-  getAns(){
+  getAns() {
     return this.http.get<any>(this.answers_url);
   }
   changeMessage(message: string) {
@@ -59,7 +59,7 @@ export class AnswersService {
     return this.catId
   }
 
-  getQuestionByCategoryId(){
+  getQuestionByCategoryId() {
     this.questionString = localStorage.getItem('question');
     this.questions = JSON.parse(this.questionString);
     console.log(this.questions);
@@ -74,7 +74,7 @@ export class AnswersService {
     this.questionString = localStorage.getItem('questions');
     this.questions = JSON.parse(this.questionString)
     console.log(this.questions);
-// JSON.parse(localStorage.getItem('categoryId'))
+    // JSON.parse(localStorage.getItem('categoryId'))
     for (var i = 0; i < this.questions.length; i++) {
       if (this.questions[i].id === this.catId) {
         this.questionaire['title'] = this.questions[i]['name'];
