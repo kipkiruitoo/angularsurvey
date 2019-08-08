@@ -22,7 +22,7 @@ export class CategoryIndexComponent implements OnInit {
             console.log(this.categories);
           localStorage.setItem('questions', JSON.stringify(this.categories[0]))
           this.questions = JSON.parse(localStorage.getItem('questions'));
-          this.isloading = !this.isloading;;
+          this.isloading = !this.isloading;
         },
         err => console.log(err)
       );
