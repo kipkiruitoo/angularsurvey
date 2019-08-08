@@ -40,6 +40,7 @@ export class AuthService {
   }
   saveUserId(id) {
     this.user_id = id;
+    localStorage.setItem('userId',this.user_id)
     console.log(this.user_id);
   }
   getUserId() {

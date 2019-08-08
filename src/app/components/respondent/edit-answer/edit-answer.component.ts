@@ -35,13 +35,13 @@ export class EditAnswerComponent implements OnInit {
   answer;
   category;
   school;
-  answers = { 'school': 0, 'category': 0, 'answer': '' };
+  answers = { 'school': '', 'category': '', 'answer': '' };
   constructor(private answerservice: AnswersService, private surveyservice: SurveyService, private authService: AuthService) { }
 
   ngOnInit() {
     this.json = this.answerservice.getQuestions();
     console.log(this.json)
-    this.answer = this.surveyservice.getAnswers();
+    this.answer = this.answerservice.getAnswers();
     const surveyModel = new Survey.Model(this.json);
     console.log(this.answer)
     // surveyModel.currentPageNo = this.answer.currentPageNo
@@ -69,17 +69,20 @@ export class EditAnswerComponent implements OnInit {
     surveyModel.onComplete.add((result) => {
       this.submitSurvey.emit(result.data);
       this.school = parseInt(this.authService.getUserId());
-      this.answers.school = this.school
-      this.category = this.surveyservice.getCategoryId();
-      this.answers.category = this.category;
+      this.answers.category = 'http://127.0.0.1:8000/survey/categories/' + this.school + '/';
+      this.answers.school = "http://localhost:8000/api/users/" + localStorage.getItem('userId') + '/';
+
+      // this.answers.school = this.school
+      // this.category = this.surveyservice.getCategoryId();
+      // this.answers.category = this.category;
       this.answers['answer'] = result.data;
       console.log(this.answers)
-      // this.onSurveyUpdate(this.answer);
+      this.onSurveyUpdate(this.answers);
     })
     Survey.SurveyNG.render("surveyElement", { model: surveyModel });
   }
   onSurveyUpdate(survey) {
-    this.surveyservice.saveAnswers(survey)
+    this.answerservice.saveAnswers(survey)
       .subscribe(
         res => console.log(res),
         err => console.log(err)
