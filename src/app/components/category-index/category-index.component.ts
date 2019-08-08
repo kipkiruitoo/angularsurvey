@@ -14,7 +14,7 @@ export class CategoryIndexComponent implements OnInit {
   questions: any;
   categories = [];
   ngOnInit() {
-    this.questions = JSON.parse(localStorage.getItem('question'));
+    this.questions = JSON.parse(localStorage.getItem('questions'));
     console.log(this.questions)
 
   }

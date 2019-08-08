@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
   zip;
   isloading = true;
   ngOnInit() {
-    this.id = localStorage.getItem('user');
+    this.id = localStorage.getItem('userId');
 
     this.prof.getProfile(this.id).subscribe(profile => {
       this.profile = profile
