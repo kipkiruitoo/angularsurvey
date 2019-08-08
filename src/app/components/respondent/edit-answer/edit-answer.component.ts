@@ -69,8 +69,8 @@ export class EditAnswerComponent implements OnInit {
     surveyModel.onComplete.add((result) => {
       this.submitSurvey.emit(result.data);
       this.school = parseInt(this.authService.getUserId());
-      this.answers.category = 'http://127.0.0.1:8000/survey/categories/' + this.school + '/';
-      this.answers.school = "http://localhost:8000/api/users/" + localStorage.getItem('userId') + '/';
+      this.answers.category = 'https://kipkiruitoo.pythonanywhere.com/survey/categories/' + this.school + '/';
+      this.answers.school = "https://kipkiruitoo.pythonanywhere.com/api/users/" + localStorage.getItem('userId') + '/';
 
       // this.answers.school = this.school
       // this.category = this.surveyservice.getCategoryId();

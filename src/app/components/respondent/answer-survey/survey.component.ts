@@ -90,8 +90,8 @@ export class SurveyComponent implements OnInit {
       this.submitSurvey.emit(result.data);
       console.log(result.data)
       console.log(this.answerservice.getCategoryId())
-      this.answers['category'] = 'http://127.0.0.1:8000/survey/categories/' + this.answerservice.getCategoryId() + '/';
-      this.answers['school'] = "http://localhost:8000/api/users/" + localStorage.getItem('userId') + '/';
+      this.answers['category'] = 'https://kipkiruitoo.pythonanywhere.com/survey/categories/' + this.answerservice.getCategoryId() + '/';
+      this.answers['school'] = "https://kipkiruitoo.pythonanywhere.com/api/users/" + localStorage.getItem('userId') + '/';
       this.answers['answer'] = result.data;
       this.result = result.data;
       this.onSurveySaved(this.answers);

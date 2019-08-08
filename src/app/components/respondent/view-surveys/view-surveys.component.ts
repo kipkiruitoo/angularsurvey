@@ -19,7 +19,7 @@ export class ViewSurveysComponent implements OnInit {
   localid;
   userid1;
   userid2;
-  ans = {'school':'','answer':'', 'category':''};
+  ans = { 'school': '', 'answer': '', 'category': '' };
   ans2;
   // question;
   question1 = '';
@@ -76,14 +76,14 @@ export class ViewSurveysComponent implements OnInit {
     // this.userid2 = JSON.parse(this.userid1);
     // console.log(this.userid2)
     for (var i = 0; i < this.answers.length; i++) {
-      if ( this.answers[i]['category'] === "http://127.0.0.1:8000/survey/categories/" + id + "/" && this.answers[i]['school'] === "http://127.0.0.1:8000/api/users/" + this.userid1 + "/"
+      if (this.answers[i]['category'] === "https://kipkiruitoo.pythonanywhere.com/survey/categories/" + id + "/" && this.answers[i]['school'] === "https://kipkiruitoo.pythonanywhere.com/api/users/" + this.userid1 + "/"
       ) {
         this.ans['category'] = this.answers[i]['category'];
         this.ans['school'] = this.answers[i]['school'];
         this.ans['answer'] = this.answers[i]['answer'];
         this.ans2 = JSON.stringify(this.answers[i]);
         localStorage.setItem('answerId', this.answers[i]['id'])
-        localStorage.setItem('answer',this.ans2)
+        localStorage.setItem('answer', this.ans2)
       }
 
     }
