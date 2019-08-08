@@ -13,8 +13,20 @@ export class CategoryIndexComponent implements OnInit {
 
   questions: any;
   categories = [];
+  isloading = true;
   ngOnInit() {
-    this.questions = JSON.parse(localStorage.getItem('questions'));
+    this.surveyservice.getCategory()
+      .subscribe(
+        res => {
+          this.categories.push(res),
+            console.log(this.categories);
+          localStorage.setItem('questions', JSON.stringify(this.categories[0]))
+          this.questions = JSON.parse(localStorage.getItem('questions'));
+          this.isloading = !this.isloading;;
+        },
+        err => console.log(err)
+      );
+
     console.log(this.questions)
 
   }
