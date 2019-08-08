@@ -1,16 +1,17 @@
-
-.sticky-top{
+.sticky-top {
   background: #fff;
-  box-shadow: 0 3px 12px 0 rgba(0,0,0,.08);
-  position: fixed;
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, .08);
+  position: absolute;
   top: 0;
   bottom: 55;
   height: 70px;
   width: 100%;
 }
-.navbar-brand{
+
+.navbar-brand {
   margin-top: -15px;
 }
-.content{
+
+.content {
   height: 200vh;
 }

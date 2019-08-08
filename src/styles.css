@@ -3,12 +3,20 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
 }
 
 .svd_commercial_container {
+  /* display: none; */
+  margin-top: 42px;
+}
+
+.svd_commercial_container a {
   display: none;
 }
 
+.sticky-top {
+  position: absolute;
+}

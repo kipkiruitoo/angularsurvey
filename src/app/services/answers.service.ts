@@ -81,7 +81,7 @@ export class AnswersService {
         console.log(this.questionaire['title'])
         this.questionaire['pages'] = this.questions[i]['questionaire'][0]['pages'];
         // this.answer = this.questions[i]['answers'][0]['answer'];
-        // console.log(this.answer)
+        console.log(this.answer)
         return this.questionaire
       }
 
@@ -100,6 +100,7 @@ export class AnswersService {
     for (var i = 0; i < this.questions.length; i++) {
       if (this.questions[i].id == JSON.parse(localStorage.getItem('categoryedit'))) {
         this.questionaire['title'] = this.questions[i]['name'];
+        this.questionaire['description'] = this.questions[i]['description']
         console.log(this.questionaire['title'])
         this.questionaire['pages'] = this.questions[i]['questionaire'][0]['pages'];
         // this.questionaire[] = this.questions[i]['answers'][0]['answer'];
