@@ -13,8 +13,11 @@ export class AnswersService {
   json;
   answers;
   answer;
+  ans;
   ans1;
   ans2;
+  ansId;
+  ansId2;
   catIdString;
   catId;
   questionString;
@@ -26,20 +29,29 @@ export class AnswersService {
   constructor(private http: HttpClient, private _router: Router) {
   }
   saveAnswers(answer) {
+    this.ansId = localStorage.getItem('answerId');
+    this.ansId2 = JSON.parse(this.ansId);
     this.answers = answer
-    return this.http.post<any>(this.answers_url, this.answers);
+    return this.http.patch<any>('http://127.0.0.1:8000/survey/answers/' + this.ansId2 + '/', this.answers);
   }
   // getQuestions() {
 
   //   return this.json;
   // }
   getAnswers() {
-    return this.answer;
+    this.ans = localStorage.getItem('answer');
+    this.ans1 = JSON.parse(this.ans);
+    this.ans2 = this.ans1['answer'];
+    console.log(this.ans)
+    return this.ans2;
+  }
+  getAns(){
+    return this.http.get<any>(this.answers_url);
   }
   changeMessage(message: string) {
-    this.messageSource.next(message)
+    // this.messageSource.next(message)
     localStorage.setItem('question', message);
-    console.log(this.currentMessage)
+    // console.log(this.currentMessage)
   }
   getCategoryId() {
     this.catIdString = localStorage.getItem('categoryId');
@@ -47,18 +59,24 @@ export class AnswersService {
     return this.catId
   }
 
+  getQuestionByCategoryId(){
+    this.questionString = localStorage.getItem('question');
+    this.questions = JSON.parse(this.questionString);
+    console.log(this.questions);
+    return this.questions;
+  }
 
   // retrieve the questions of the category the user wants to view
   getQuestions() {
     this.catIdString = localStorage.getItem('categoryId');
     this.catId = JSON.parse(this.catIdString);
     console.log(this.catId);
-    this.questionString = localStorage.getItem('question');
+    this.questionString = localStorage.getItem('questions');
     this.questions = JSON.parse(this.questionString)
     console.log(this.questions);
-
+// JSON.parse(localStorage.getItem('categoryId'))
     for (var i = 0; i < this.questions.length; i++) {
-      if (this.questions[i].id == JSON.parse(localStorage.getItem('categoryId'))) {
+      if (this.questions[i].id === this.catId) {
         this.questionaire['title'] = this.questions[i]['name'];
         console.log(this.questionaire['title'])
         this.questionaire['pages'] = this.questions[i]['questionaire'][0]['pages'];
@@ -92,5 +110,6 @@ export class AnswersService {
 
     }
   }
+
 }
 

@@ -54,7 +54,7 @@ export class SurveyComponent implements OnInit {
 
   result: any;
   ngOnInit() {
-    this.cat_id = this.answerservice.getQuestions();
+    this.cat_id = this.answerservice.getQuestionByCategoryId();
     console.log(this.cat_id)
     const surveyModel = new Survey.Model(this.cat_id);
     surveyModel.onAfterRenderQuestion.add((survey, options) => {

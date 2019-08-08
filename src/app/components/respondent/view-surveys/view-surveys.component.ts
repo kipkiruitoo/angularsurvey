@@ -17,6 +17,10 @@ export class ViewSurveysComponent implements OnInit {
   cats;
   answers;
   localid;
+  userid1;
+  userid2;
+  ans = {'school':'','answer':'', 'category':''};
+  ans2;
   // question;
   question1 = '';
   ngOnInit() {
@@ -28,6 +32,20 @@ export class ViewSurveysComponent implements OnInit {
         },
         err => console.log(err)
       );
+    this.answerservice.getAns().subscribe(
+      res => {
+        console.log(res);
+        this.userid1 = localStorage.getItem('userId');
+        console.log(this.userid1)
+        this.answers = res;
+        console.log(this.answers[0]['category'])
+      },
+      err => console.log(err)
+    )
+
+    // this.userid2 = JSON.parse(this.userid1);
+    // console.log(this.userid2)
+
     this.route.paramMap
       .subscribe(params => {
         console.log(params);
@@ -41,7 +59,7 @@ export class ViewSurveysComponent implements OnInit {
       if (this.cats[i]['id'] === id) {
         this.question['title'] = this.cats[i]['name'];
         this.question['pages'] = this.cats[i]['questionaire'][0]['pages'];
-        this.answers = this.cats[i]['answers'][0]['answer'];
+        // this.answers = this.cats[i]['answers'][0]['answer'];
         this.surveyService.setCategoryId(id);
         this.surveyService.storeAnswers(this.answers)
         this.answerservice.changeMessage(JSON.stringify(this.question))
@@ -51,12 +69,33 @@ export class ViewSurveysComponent implements OnInit {
       }
     }
   }
+
+  getAns(id) {
+    localStorage.setItem('categoryId', id);
+    this.userid1 = localStorage.getItem('userId');
+    // this.userid2 = JSON.parse(this.userid1);
+    // console.log(this.userid2)
+    for (var i = 0; i < this.answers.length; i++) {
+      if ( this.answers[i]['category'] === "http://127.0.0.1:8000/survey/categories/" + id + "/" && this.answers[i]['school'] === "http://127.0.0.1:8000/api/users/" + this.userid1 + "/"
+      ) {
+        this.ans['category'] = this.answers[i]['category'];
+        this.ans['school'] = this.answers[i]['school'];
+        this.ans['answer'] = this.answers[i]['answer'];
+        this.ans2 = JSON.stringify(this.answers[i]);
+        localStorage.setItem('answerId', this.answers[i]['id'])
+        localStorage.setItem('answer',this.ans2)
+      }
+
+    }
+  }
+
   openSurvey(id) {
     console.log(id);
   }
   getCats() {
     this.cats = this.categories[0];
     console.log(this.cats)
-    localStorage.setItem('question', JSON.stringify(this.cats));
+    localStorage.setItem('questions', JSON.stringify(this.cats));
   }
 }
+// && this.answers[i]['school'] === `http://localhost:8000/api/users/${this.userid1}/`
