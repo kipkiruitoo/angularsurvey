@@ -65,6 +65,7 @@ export class EditsurveyComponent {
     //   this.json = json.json;
     // });
     this.json = this.answerservice.getSurvey();
+    console.log(this.json);
     SurveyKo.JsonObject.metaData.addProperty(
       "questionbase",
       "popupdescription:text"
@@ -116,7 +117,7 @@ export class EditsurveyComponent {
             res => {
               this.categories.push(res),
                 console.log(this.categories);
-              localStorage.setItem('question', JSON.stringify(this.categories[0]))
+              localStorage.setItem('questions', JSON.stringify(this.categories[0]))
             },
             err => console.log(err)
           );

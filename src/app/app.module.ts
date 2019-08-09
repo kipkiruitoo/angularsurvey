@@ -29,14 +29,17 @@ import { ViewSurveysComponent } from './components/respondent/view-surveys/view-
 import { EditsurveyComponent } from './components/admin/editsurvey/editsurvey.component';
 import { EditAnswerComponent } from './components/respondent/edit-answer/edit-answer.component'
 import { CategoryIndexComponent } from './components/category-index/category-index.component';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component'
-
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { LoaderComponent } from './components/shared/loader/loader.component'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderService } from './services/loader.service';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 @NgModule({
-  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent,EditAnswerComponent, SidemenuComponent],
+  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent, EditAnswerComponent, SidemenuComponent, LoaderComponent],
 
 
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
-  providers: [AnswersService, SurveyService, AuthService, AuthGuard, {
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, MatProgressSpinnerModule],
+  providers: [AnswersService, SurveyService, AuthService, AuthGuard, LoaderService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true

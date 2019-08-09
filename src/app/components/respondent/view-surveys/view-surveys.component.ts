@@ -21,6 +21,7 @@ export class ViewSurveysComponent implements OnInit {
   userid2;
   ans = { 'school': '', 'answer': '', 'category': '' };
   ans2;
+  isLoading = false;
   // question;
   question1 = '';
   ngOnInit() {
@@ -52,6 +53,7 @@ export class ViewSurveysComponent implements OnInit {
       });
   }
   getQues(id) {
+    this.isLoading = true;
     localStorage.setItem('categoryId', id);
     this.localid = localStorage.getItem('categoryId');
     console.log(this.localid);
@@ -93,9 +95,12 @@ export class ViewSurveysComponent implements OnInit {
     console.log(id);
   }
   getCats() {
+    this.isLoading = true;
+
     this.cats = this.categories[0];
     console.log(this.cats)
     localStorage.setItem('questions', JSON.stringify(this.cats));
+    this.isLoading = false;
   }
 }
 // && this.answers[i]['school'] === `http://localhost:8000/api/users/${this.userid1}/`

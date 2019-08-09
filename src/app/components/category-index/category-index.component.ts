@@ -41,6 +41,7 @@ export class CategoryIndexComponent implements OnInit {
 
   }
   delete(id) {
+    this.isloading = true;
     this.surveyservice.deleteCategory(id).subscribe(res => {
       console.log(res)
       this.surveyservice.getCategory()
@@ -49,8 +50,9 @@ export class CategoryIndexComponent implements OnInit {
             this.categories.push(res),
               console.log(this.categories);
             localStorage.setItem('question', JSON.stringify(this.categories[0]))
-
+            this.isloading = false;
             this._router.navigate(['surveys'])
+
             location.reload();
 
           },

@@ -9,7 +9,7 @@ import { Question } from 'survey-angular';
   providedIn: 'root'
 })
 export class AnswersService {
-  private answers_url = 'http://kipkiruitoo.pythonanywhere.com/survey/answers/';
+  private answers_url = 'https://kipkiruitoo.pythonanywhere.com/survey/answers/';
   json;
   answers;
   answer;
@@ -32,7 +32,7 @@ export class AnswersService {
     this.ansId = localStorage.getItem('answerId');
     this.ansId2 = JSON.parse(this.ansId);
     this.answers = answer
-    return this.http.patch<any>('http://kipkiruitoo.pythonanywhere.com/survey/answers/' + this.ansId2 + '/', this.answers);
+    return this.http.patch<any>('https://kipkiruitoo.pythonanywhere.com/survey/answers/' + this.ansId2 + '/', this.answers);
   }
   // getQuestions() {
 

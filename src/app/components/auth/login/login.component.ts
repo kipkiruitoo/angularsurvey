@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   user_id;
   user_url = "http://localhost:8000/api/users/";
   user: any = { groups: '' }
+  isLoading = false;
   public role = "";
   constructor(private _auth: AuthService,
     private _router: Router,
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.role = "";
   }
   loginUser() {
+    this.isLoading = true;
     // console.log(this.loginUserData);
     this.role = "";
     this._auth.loginUser(this.loginUserData)

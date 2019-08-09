@@ -8,12 +8,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  public registerUserData = { username:'', email:'', password:''} ;
-  constructor(private _auth: AuthService,private _router: Router) { }
-
+  public registerUserData = { username: '', email: '', password: '' };
+  constructor(private _auth: AuthService, private _router: Router) { }
+  isLoading = false;
   ngOnInit() {
   }
   registerUser() {
+    this.isLoading = true;
     // console.log(this.registerUserData);
     this._auth.registerUser(this.registerUserData)
       .subscribe(
@@ -21,7 +22,12 @@ export class RegisterComponent implements OnInit {
           console.log(res)
           this._router.navigate(['login']);
         },
-        err => console.log(err)
+
+        err => {
+          console.log(err)
+          this.isLoading = false;
+        }
+
       );
   }
 
