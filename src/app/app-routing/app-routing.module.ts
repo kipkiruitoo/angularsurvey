@@ -56,19 +56,23 @@ const routes: Routes = [
   },
   {
     path: "createsurvey",
-    component: SurveyCreatorComponent
+    component: SurveyCreatorComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "surveys",
-    component: CategoryIndexComponent
+    component: CategoryIndexComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "editsurvey",
-    component: EditsurveyComponent
+    component: EditsurveyComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "viewsurvey",
-    component: ViewSurveysComponent
+    component: ViewSurveysComponent,
+    canActivate: [AuthGuard]
   }
 ];
 @NgModule({
