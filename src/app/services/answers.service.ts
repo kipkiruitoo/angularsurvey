@@ -104,6 +104,7 @@ export class AnswersService {
         console.log(this.questionaire['title'])
         this.questionaire['pages'] = this.questions[i]['questionaire'][0]['pages'];
         // this.questionaire[] = this.questions[i]['answers'][0]['answer'];
+        console.log(this.questionaire);
         return this.questionaire
       }
 

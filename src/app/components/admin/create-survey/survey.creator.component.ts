@@ -98,50 +98,62 @@ export class SurveyCreatorComponent {
   };
   saveMyCategory = () => {
     this.json = JSON.parse(this.surveyCreator.text);
-    // console.log(this.json['title'])
-    this.surveyservice.saveCategory(this.json['title'], this.json['description']);
-    this.category = { "name": this.json['title'], "description": this.json['description'] };
-    // console.log(this.json['title'])
-    // this.submitCategories()
+    if (!this.json['title'] === null) {
 
-    //  this is what i changed... rather than calling another method.. i called the post category method in the service..
-    // then got the id from the response
-    // and passed it to the category part in the json
-    // and then make another service request to save the json with the new category;
-    this.surveyservice.postCategory(this.category).subscribe(res => {
-      console.log(res);
-      this.cat_id = res.id;
-      console.log(this.cat_id);
-      this.json['category'] = this.cat_id
-      console.log(this.json);
+      this.isloading = false;
+      this.notifier.notify('error', 'pleas add a title before trying to save')
+    }
+    else if (!this.json['description']) {
+      this.isloading = false;
+      this.notifier.notify('error', 'pleas add a description before trying to save')
+    }
+    else {
+      // console.log(this.json['title'])
+      this.surveyservice.saveCategory(this.json['title'], this.json['description']);
+      this.category = { "name": this.json['title'], "description": this.json['description'] };
+      // console.log(this.json['title'])
+      // this.submitCategories()
 
-      this.surveyservice.postQuestionnaire(this.json).subscribe(res => {
+      //  this is what i changed... rather than calling another method.. i called the post category method in the service..
+      // then got the id from the response
+      // and passed it to the category part in the json
+      // and then make another service request to save the json with the new category;
+      this.surveyservice.postCategory(this.category).subscribe(res => {
         console.log(res);
-        this.surveyservice.getCategory()
-          .subscribe(
-            res => {
-              this.isloading = false;
-              this.categories.push(res),
-                console.log(this.categories);
-              localStorage.setItem('question', JSON.stringify(this.categories[0]))
-              this.notifier.notify('success', 'Category Saved Sucessfully');
-              // window.location.reload()
-              this._router.navigate(['surveys']);
+        this.cat_id = res.id;
+        console.log(this.cat_id);
+        this.json['category'] = this.cat_id
+        console.log(this.json);
+
+        this.surveyservice.postQuestionnaire(this.json).subscribe(res => {
+          console.log(res);
+          this.surveyservice.getCategory()
+            .subscribe(
+              res => {
+                this.isloading = false;
+                this.categories.push(res),
+                  console.log(this.categories);
+                localStorage.setItem('question', JSON.stringify(this.categories[0]))
+                this.notifier.notify('success', 'Category Saved Sucessfully');
+                // window.location.reload()
+                this._router.navigate(['surveys']);
 
 
-            },
-            err => {
-              this.isloading = false;
-              console.log(err)
+              },
+              err => {
+                this.isloading = false;
+                console.log(err)
 
-              this.notifier.notify('error', 'Something terrible happened');
-            }
-          );
+                this.notifier.notify('error', 'Something terrible happened');
+              }
+            );
+        })
+
+
+
       })
+    }
 
-
-
-    })
   }
   // submitCategories() {
   //   this.surveyservice.submitCategory()

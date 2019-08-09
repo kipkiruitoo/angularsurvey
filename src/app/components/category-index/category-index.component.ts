@@ -33,7 +33,7 @@ export class CategoryIndexComponent implements OnInit {
   }
   editCategory(id) {
     localStorage.setItem('categoryedit', id);
-    console.log("clicked")
+    // console.log("clicked")
     this._router.navigate(['editsurvey'])
   }
   add() {
