@@ -5,15 +5,15 @@
     <form class="form-signin">
 
       <div class="form-label-group">
-        <input type="text" [(ngModel)]="registerUserData.username" placeholder="Username" name="username"
+        <input required type="text" [(ngModel)]="registerUserData.username" placeholder="Username" name="username"
           class="form-control rounded-0" required>
       </div>
       <div class="form-label-group">
-        <input type="email" [(ngModel)]="registerUserData.email" placeholder="Email address" name="email"
+        <input required type="email" [(ngModel)]="registerUserData.email" placeholder="Email address" name="email"
           class="form-control rounded-0" required>
       </div>
       <div class="form-label-group">
-        <input type="password" [(ngModel)]="registerUserData.password" placeholder="Password" name="password"
+        <input required type="password" [(ngModel)]="registerUserData.password" placeholder="Password" name="password"
           class="form-control rounded-0" required>
       </div>
       <button type="button" (click)="registerUser()" class="btn btn-lg btn-primary btn-block">Register</button>

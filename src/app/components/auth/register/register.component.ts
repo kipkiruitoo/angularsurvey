@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,8 +9,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  private readonly notifier: NotifierService;
+
   public registerUserData = { username: '', email: '', password: '' };
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private _auth: AuthService, private _router: Router, private notifierService: NotifierService, ) {
+
+    this.notifier = notifierService;
+  }
   isLoading = false;
   ngOnInit() {
   }
@@ -20,6 +26,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
+          this.notifier.notify('success', 'Registration Successful');
           this._router.navigate(['login']);
         },
 

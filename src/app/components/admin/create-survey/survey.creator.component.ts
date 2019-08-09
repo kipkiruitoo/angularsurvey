@@ -4,6 +4,7 @@ import * as SurveyCreator from "survey-creator";
 import * as widgets from "surveyjs-widgets";
 import { SurveyService } from "../../../services/survey.service";
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 import "inputmask/dist/inputmask/phone-codes/phone.js";
 import { Observable } from "rxjs";
@@ -48,8 +49,12 @@ SurveyCreator.SurveyPropertyModalEditor.registerCustomWidget(
   templateUrl: "./create-survey.component.html"
 })
 export class SurveyCreatorComponent {
+  private readonly notifier: NotifierService;
+  isloading = false;
   surveyCreator: SurveyCreator.SurveyCreator;
-  constructor(private surveyservice: SurveyService, private _router: Router, ) { }
+  constructor(private surveyservice: SurveyService, private _router: Router, private notifierService: NotifierService) {
+    this.notifier = notifierService;
+  }
 
   json;
   public data = { "pages": "" };
@@ -81,6 +86,7 @@ export class SurveyCreatorComponent {
   }
 
   saveMySurvey = () => {
+    this.isloading = true;
     // console.log(JSON.stringify(this.surveyCreator.text));
     this.json = JSON.parse(this.surveyCreator.text);
     this.surveyservice.saveSurvey(this.json['pages']);
@@ -114,12 +120,22 @@ export class SurveyCreatorComponent {
         this.surveyservice.getCategory()
           .subscribe(
             res => {
+              this.isloading = false;
               this.categories.push(res),
                 console.log(this.categories);
               localStorage.setItem('question', JSON.stringify(this.categories[0]))
-              location.reload();
+              this.notifier.notify('success', 'Category Saved Sucessfully');
+              // window.location.reload()
+              this._router.navigate(['surveys']);
+
+
             },
-            err => console.log(err)
+            err => {
+              this.isloading = false;
+              console.log(err)
+
+              this.notifier.notify('error', 'Something terrible happened');
+            }
           );
       })
 

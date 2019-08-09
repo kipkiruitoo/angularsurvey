@@ -17,6 +17,7 @@ import { ScripterComponent } from './components/usersPages/scripter/scripter.com
 import { ProfileComponent } from './components/usersPages/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NotifierModule } from 'angular-notifier';
 
 import { AnswersService } from './services/answers.service';
 import { SurveyService } from './services/survey.service'
@@ -38,7 +39,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
   declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent, EditAnswerComponent, SidemenuComponent, LoaderComponent],
 
 
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, MatProgressSpinnerModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, MatProgressSpinnerModule, NotifierModule],
   providers: [AnswersService, SurveyService, AuthService, AuthGuard, LoaderService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

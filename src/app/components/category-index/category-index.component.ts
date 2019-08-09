@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { SurveyService } from '../../services/survey.service';
+import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-category-index',
   templateUrl: './category-index.component.html',
@@ -9,7 +10,7 @@ import { SurveyService } from '../../services/survey.service';
 })
 export class CategoryIndexComponent implements OnInit {
 
-  constructor(private _router: Router, private surveyservice: SurveyService) { }
+  constructor(private _router: Router, private surveyservice: SurveyService, private notifier: NotifierService) { }
 
   questions: any;
   categories = [];
@@ -27,7 +28,7 @@ export class CategoryIndexComponent implements OnInit {
         err => console.log(err)
       );
 
-    console.log(this.questions)
+    // console.log(this.questions)
 
   }
   editCategory(id) {
@@ -52,6 +53,7 @@ export class CategoryIndexComponent implements OnInit {
             localStorage.setItem('question', JSON.stringify(this.categories[0]))
             this.isloading = false;
             this._router.navigate(['surveys'])
+            this.notifier.notify('error', 'Delete was Successful')
 
             location.reload();
 

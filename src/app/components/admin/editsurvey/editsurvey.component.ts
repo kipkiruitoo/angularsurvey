@@ -4,7 +4,7 @@ import * as SurveyCreator from "survey-creator";
 import * as widgets from "surveyjs-widgets";
 import { SurveyService } from "../../../services/survey.service";
 import { AnswersService } from '../../../services/answers.service';
-
+import { NotifierService } from 'angular-notifier';
 import "inputmask/dist/inputmask/phone-codes/phone.js";
 import { Observable } from "rxjs";
 
@@ -48,14 +48,14 @@ SurveyCreator.SurveyPropertyModalEditor.registerCustomWidget(
 })
 export class EditsurveyComponent {
   surveyCreator: SurveyCreator.SurveyCreator;
-  constructor(private surveyservice: SurveyService, private answerservice: AnswersService) { }
+  constructor(private surveyservice: SurveyService, private answerservice: AnswersService, private notifier: NotifierService) { }
 
   json;
   public data = { "pages": "" };
   page = this.data.pages
   cat_id;
   categories = [];
-
+  isloading = true;
   category = { "name": '', "description": '' };
   @Output() surveySaved: EventEmitter<Object> = new EventEmitter();
   ngOnInit() {
@@ -79,9 +79,11 @@ export class EditsurveyComponent {
     );
     this.surveyCreator.text = JSON.stringify(this.json);
     this.surveyCreator.saveSurveyFunc = this.saveMySurvey;
+    this.isloading = false;
   }
 
   saveMySurvey = () => {
+    this.isloading = true;
     // console.log(JSON.stringify(this.surveyCreator.text));
     this.json = JSON.parse(this.surveyCreator.text);
     this.surveyservice.saveSurvey(this.json['pages']);
@@ -118,8 +120,16 @@ export class EditsurveyComponent {
               this.categories.push(res),
                 console.log(this.categories);
               localStorage.setItem('questions', JSON.stringify(this.categories[0]))
+
+              this.isloading = false;
+              this.notifier.notify('success', 'Edit was successful');
+
             },
-            err => console.log(err)
+            err => {
+              console.log(err)
+              this.notifier.notify('error', 'Something terrible happened');
+            }
+
           );
       })
 
