@@ -32,9 +32,31 @@ export class CategoryIndexComponent implements OnInit {
 
   }
   editCategory(id) {
-    localStorage.setItem('categoryedit', id);
-    // console.log("clicked")
-    this._router.navigate(['editsurvey'])
+    this.loadspinner();
+    this.isloading = true;
+    this.surveyservice.getCategory()
+      .subscribe(
+        res => {
+          this.categories.push(res),
+            console.log(this.categories);
+          localStorage.setItem('question', JSON.stringify(this.categories[0]))
+
+
+
+          localStorage.setItem('categoryedit', id);
+          // console.log("clicked")
+          this._router.navigate(['editsurvey'])
+          // this.isloading = false;
+
+        },
+        err => console.log(err)
+      );
+
+
+
+  }
+  loadspinner() {
+    this.isloading = true;
   }
   add() {
     console.log('add')

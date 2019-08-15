@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyService } from '../../../services/survey.service';
 import { AnswersService } from '../../../services/answers.service';
 import { ActivatedRoute } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-view-surveys',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewSurveysComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private surveyService: SurveyService, private answerservice: AnswersService) { }
+  constructor(private route: ActivatedRoute, private surveyService: SurveyService, private answerservice: AnswersService, private notifier: NotifierService) { }
 
   categories = [];
   question = { 'title': '', 'showProgressBar': 'top', 'pages': '' };
@@ -25,6 +26,7 @@ export class ViewSurveysComponent implements OnInit {
   // question;
   question1 = '';
   ngOnInit() {
+    this.notifier.notify('warning', 'please remember to finish filling in your profile if you have not');
     this.surveyService.getCategory()
       .subscribe(
         res => {

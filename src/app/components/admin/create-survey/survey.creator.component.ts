@@ -98,7 +98,7 @@ export class SurveyCreatorComponent {
   };
   saveMyCategory = () => {
     this.json = JSON.parse(this.surveyCreator.text);
-    if (!this.json['title'] === null) {
+    if (!this.json['title']) {
 
       this.isloading = false;
       this.notifier.notify('error', 'pleas add a title before trying to save')
@@ -106,6 +106,9 @@ export class SurveyCreatorComponent {
     else if (!this.json['description']) {
       this.isloading = false;
       this.notifier.notify('error', 'pleas add a description before trying to save')
+    }
+    else if (!this.json['pages']) {
+      this.notifier.notify('error', 'it seems you have not added questions yet')
     }
     else {
       // console.log(this.json['title'])
@@ -141,10 +144,11 @@ export class SurveyCreatorComponent {
 
               },
               err => {
-                this.isloading = false;
-                console.log(err)
-
                 this.notifier.notify('error', 'Something terrible happened');
+                this.isloading = false;
+                console.log(err);
+
+
               }
             );
         })

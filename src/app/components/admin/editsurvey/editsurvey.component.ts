@@ -57,7 +57,7 @@ export class EditsurveyComponent {
   categories = [];
   isloading = true;
   category = { "name": '', "description": '' };
-  @Output() surveySaved: EventEmitter<Object> = new EventEmitter();
+  // @Output() surveySaved: EventEmitter<Object> = new EventEmitter();
   ngOnInit() {
 
     // this.surveyservice.getSurveys().subscribe(json => {
