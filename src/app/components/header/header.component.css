@@ -12,16 +12,23 @@
   margin-top: -15px;
 }
 
+.collapse {
+  margin-right: 0;
+}
+
 .content {
   height: 200vh;
 }
-.collapse{
+
+.collapse {
   padding-right: 0px;
 }
+
 .mr-auto {
   margin-right: auto !important;
   /* float: right; */
 }
+
 @media screen and (min-width: 960px) {
   .mr-auto {
     margin-right: auto !important;

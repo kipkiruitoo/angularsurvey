@@ -3,7 +3,7 @@ import { ProfileService } from '../../../services/profile.service';
 import { AuthService } from '../../../services/auth.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { NotifierService } from 'angular-notifier';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private http: HttpClient, private prof: ProfileService, private authservice: AuthService) { }
+  constructor(private http: HttpClient, private prof: ProfileService, private authservice: AuthService, private notifier: NotifierService) { }
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
   });
@@ -43,10 +43,17 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isloading = true;
     console.log('something was submitted')
     console.log(this.profile)
     this.prof.updateProfile(this.profile, this.id).subscribe(profile => {
       this.profile = profile;
+      this.isloading = false;
+      this.notifier.notify('success', 'profile updated sucessfully')
+    }, err => {
+      this.isloading = false;
+      this.notifier.notify('error', 'something went wrong while trying to update your profile');
+      console.log(err)
     });
   }
 

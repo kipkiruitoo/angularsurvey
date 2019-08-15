@@ -1,0 +1,17 @@
+.btn {
+  background: #F48637;
+  color: aliceblue;
+}
+
+/* #left {
+  float: left;
+} */
+
+p {
+  font-weight: bold;
+  text-align: center;
+}
+
+.l {
+  margin: 20px;
+}

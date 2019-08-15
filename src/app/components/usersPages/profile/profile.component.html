@@ -1,7 +1,8 @@
+<app-loader *ngIf="isloading"></app-loader>
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <div class="card" style="height: 70rem;" *ngIf="!isloading">
-      <img class="card-img-top" src="https://via.placeholder.com/40" alt="Card image cap">
+      <!-- <img class="card-img-top" src="https://via.placeholder.com/40" alt="Card image cap"> -->
       <div class="card-body">
         <form novalidate (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -11,24 +12,24 @@
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" name="email" [(ngModel)]="user.email" id="exampleInputEmail1"
-              aria-describedby="emailHelp" placeholder="Schools email adress">
+            <input type="email" required class="form-control" name="email" [(ngModel)]="user.email"
+              id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Schools email adress">
 
           </div>
           <div class="form-group">
             <label for="county">county</label>
-            <input type="text" class="form-control" name="county" [(ngModel)]="profile.county" id="county"
+            <input type="text" required class="form-control" name="county" [(ngModel)]="profile.county" id="county"
               placeholder="County">
           </div>
           <div class="form-group">
             <label for="county">Telephone Number</label>
-            <input type="text" class="form-control" name="telephone" [(ngModel)]="profile.telephone" id="telephone"
-              placeholder="Schools Telephone Number">
+            <input type="text" required class="form-control" name="telephone" [(ngModel)]="profile.telephone"
+              id="telephone" placeholder="Schools Telephone Number">
           </div>
           <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" class="form-control" name="postaladdress" [(ngModel)]="profile.postaladdress" id="county"
-              id="address" placeholder="Postal Address of the school">
+            <input type="text" required class="form-control" name="postaladdress" [(ngModel)]="profile.postaladdress"
+              id="county" id="address" placeholder="Postal Address of the school">
           </div>
           <!-- 
           <div class="form-group">

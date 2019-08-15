@@ -12,7 +12,7 @@
 .carousel-item {
   height: 100vh;
   min-height: 350px;
-  width:100%;
+  width: 100%;
   /* background-size: auto; */
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
@@ -99,6 +99,7 @@
 #loginBtn {
   background-color: #F48637;
 }
+
 .img-responsive,
 .thumbnail>img,
 .thumbnail a>img,
@@ -109,20 +110,20 @@
   height: auto;
 }
 
-.flippy .space img{
-  width:250px;
-  height:250px;
+.flippy .space img {
+  width: 250px;
+  height: 250px;
   margin: 0 auto;
 }
 
-.flippy .space{
+.flippy .space {
   width: 80%;
   margin: 0 auto;
   margin-bottom: 20px;
   margin-top: 20px;
 }
 
-.flippy .space .flip-card{
+.flippy .space .flip-card {
   margin: 0 auto;
 }
 
@@ -130,12 +131,12 @@
   font-family: Montserrat;
 }
 
-.flippy .space p{
+.flippy .space p {
   font-size: 18px;
   text-align: center;
 }
 
-.flippy .space h4{
+.flippy .space h4 {
   color: #ffffff;
   font-weight: 600;
   font-size: 18px;
@@ -144,14 +145,14 @@
 }
 
 
-.flippy .space .flip-card i{
+.flippy .space .flip-card i {
   color: #ffffff;
   font-size: 15px;
   line-height: 15px;
 }
 
 @media screen and (max-width: 768px) {
-  .flippy .space{
+  .flippy .space {
     margin-bottom: 125px;
   }
 }
@@ -168,4 +169,8 @@
   .container {
     max-width: 930px;
   }
+}
+
+.collapsed {
+  margin-top: 50px;
 }
