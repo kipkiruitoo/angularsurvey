@@ -26,12 +26,17 @@ export class ViewSurveysComponent implements OnInit {
   // question;
   question1 = '';
   ngOnInit() {
+    this.isLoading = true;
     this.notifier.notify('warning', 'please remember to finish filling in your profile if you have not');
+
     this.surveyService.getCategory()
       .subscribe(
         res => {
           this.categories.push(res),
             console.log(this.categories);
+          this.cats = this.categories[0];
+          localStorage.setItem('questions', JSON.stringify(this.cats));
+          this.isLoading = false;
         },
         err => console.log(err)
       );
@@ -42,6 +47,7 @@ export class ViewSurveysComponent implements OnInit {
         console.log(this.userid1)
         this.answers = res;
         console.log(this.answers[0]['category'])
+        // this.getCats();
       },
       err => console.log(err)
     )
@@ -97,7 +103,7 @@ export class ViewSurveysComponent implements OnInit {
     console.log(id);
   }
   getCats() {
-    this.isLoading = true;
+    // this.isLoading = true;
 
     this.cats = this.categories[0];
     console.log(this.cats)

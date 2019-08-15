@@ -3,6 +3,8 @@ import { SurveyService } from "../../../services/survey.service";
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { AnswersService } from '../../../services/answers.service';
+import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 import * as Survey from 'survey-angular';
 import * as widgets from 'surveyjs-widgets';
@@ -36,12 +38,14 @@ export class SurveyComponent implements OnInit {
 
   cat_id;
   json;
+  saved = false;
+  isloading = false;
   question = { 'title': '', 'showProgressBar': 'top', 'pages': '' };
   answers = { 'school': '', 'category': '', 'answer': '' };
   message;
 
 
-  constructor(private surveyservice: SurveyService, private route: ActivatedRoute, private authService: AuthService, private answerservice: AnswersService) {
+  constructor(private router: Router, private notifier: NotifierService, private surveyservice: SurveyService, private route: ActivatedRoute, private authService: AuthService, private answerservice: AnswersService) {
     // this.route.params.subscribe(params => {
     //   console.log(params.id),
     //     this.cat_id = params.id
@@ -87,6 +91,7 @@ export class SurveyComponent implements OnInit {
     //   }
     //   );
     surveyModel.onComplete.add((result) => {
+      this.isloading = true;
       this.submitSurvey.emit(result.data);
       console.log(result.data)
       console.log(this.answerservice.getCategoryId())
@@ -101,13 +106,18 @@ export class SurveyComponent implements OnInit {
 
   }
   onSurveySaved(survey) {
+    this.saved = true;
     console.log(survey);
     this.surveyservice.saveAnswers(survey).subscribe(res => {
+      this.isloading = false;
       console.log(res);
+      this.notifier.notify('success', 'Your answers were saved')
+      this.router.navigate(['viewsurvey'])
 
     },
       err => console.log(err)
     );
+
   }
 
 

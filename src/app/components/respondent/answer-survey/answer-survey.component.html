@@ -15,6 +15,7 @@
 <!-- <div class='survey-container contentcontainer codecontainer'>
   <div id='surveyElement'></div>
 </div> -->
+<app-loader *ngIf="isloading"></app-loader>
 <div class='survey-container contentcontainer codecontainer'>
-  <div id='surveyElement'></div><button (click)='savePDF()'>Save PDF</button>
+  <div id='surveyElement'></div><button *ngIf="!saved" (click)='savePDF()'>Save PDF</button>
 </div>

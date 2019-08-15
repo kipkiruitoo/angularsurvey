@@ -1,52 +1,17 @@
 <app-loader *ngIf="isLoading"></app-loader>
-
-<div class="container-fluid">
-  <div class="row" style="height: 100px; background-color: transparent;">
-  </div>
-  <div class="moreHeader row">
-    <div class="col-xs-6">
-      <div class="btn-group ">
-        <button type="button" class="btn btn-white" (click)="getCats()" type="button">
-          VIEW ALL CATEGORIES
-        </button>
-      </div>
-      <!-- <button class="btn btn-white" (click)="getRest()" type="button"><h2></h2></button> -->
+<div class="container" *ngIf="!isLoading">
+  <div class="card" *ngFor="let res of cats">
+    <div class="card-body">
+      <h3 class="card-title">{{res.name}}</h3>
+      <p class="card-text">{{res.description}}</p>
+      <a class="card-link" [routerLink]="['/survey']" class="grey-text d-flex justify-content-end"
+        (click)="getQues(res.id)">
+        <h5>View Category <i class="fa fa-angle-double-right"></i></h5>
+      </a>
+      <a class="card-link" [routerLink]="['/editanswer']" class="grey-text d-flex justify-content-end"
+        (click)="getAns(res.id)">
+        <h5>View Answers <i class="fa fa-angle-double-right"></i></h5>
+      </a>
     </div>
   </div>
-  <hr>
 </div>
-<!-- </section> -->
-<section id="more">
-  <div class="grid-container popular">
-    <div *ngFor="let res of cats">
-      <!-- Card Light -->
-      <div class="card">
-
-        <!-- Card image -->
-        <div class="view overlay">
-          <img class="card-img-top" src="" alt="Category ">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-
-        <!-- Card content -->
-        <div class="card-body">
-          <!-- Title -->
-          <h4 class="card-title">{{res.name}}</h4>
-          <hr>
-          <!-- Text -->
-          <p class="card-text">{{res.description}}</p>
-          <!-- Link -->
-          <!-- <button class="btn btn-white" (click)="getQues(res.id)" type="button">View Category</button> -->
-          <a [routerLink]="['/survey']" class="grey-text d-flex justify-content-end" (click)="getQues(res.id)">
-            <h5>View Category <i class="fas fa-angle-double-right"></i></h5>
-          </a>
-          <a [routerLink]="['/editanswer']" class="grey-text d-flex justify-content-end" (click)="getAns(res.id)">
-            <h5>View Answers <i class="fas fa-angle-double-right"></i></h5>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>

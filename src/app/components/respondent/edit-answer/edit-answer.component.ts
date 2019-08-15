@@ -4,7 +4,8 @@ import * as widgets from "surveyjs-widgets";
 import { AnswersService } from '../../../services/answers.service';
 import { SurveyService } from "../../../services/survey.service";
 import { AuthService } from '../../../services/auth.service';
-
+import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 import "inputmask/dist/inputmask/phone-codes/phone.js";
 
 widgets.icheck(Survey);
@@ -32,11 +33,12 @@ Survey.JsonObject.metaData.addProperty("page", "popupdescription:text");
 export class EditAnswerComponent implements OnInit {
   @Output() submitSurvey = new EventEmitter<any>();
   json;
+  isloading = false;
   answer;
   category;
   school;
   answers = { 'school': '', 'category': '', 'answer': '' };
-  constructor(private answerservice: AnswersService, private surveyservice: SurveyService, private authService: AuthService) { }
+  constructor(private router: Router, private notifier: NotifierService, private answerservice: AnswersService, private surveyservice: SurveyService, private authService: AuthService) { }
 
   ngOnInit() {
     this.json = this.answerservice.getQuestions();
@@ -67,6 +69,7 @@ export class EditAnswerComponent implements OnInit {
       header.appendChild(btn);
     });
     surveyModel.onComplete.add((result) => {
+      this.isloading = true;
       this.submitSurvey.emit(result.data);
       this.school = parseInt(this.authService.getUserId());
 
@@ -85,7 +88,12 @@ export class EditAnswerComponent implements OnInit {
   onSurveyUpdate(survey) {
     this.answerservice.saveAnswers(survey)
       .subscribe(
-        res => console.log(res),
+        res => {
+          this.isloading = false;
+          console.log(res)
+          this.notifier.notify('success', 'Your answers were saved');
+          this.router.navigate(['viewsurvey'])
+        },
         err => console.log(err)
       );
   }

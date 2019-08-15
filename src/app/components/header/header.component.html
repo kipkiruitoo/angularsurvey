@@ -27,6 +27,10 @@
           routerLinkActive="active"><b>Register</b></a>
       </li>
       <li class="nav-item">
+        <a routerLink="/viewsurvey" class="nav-link " class="btn btn-outline-secondary" *ngIf="_authService.loggedIn()"
+          routerLinkActive="active"><b>Categories</b></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" class="btn btn-outline-secondary" *ngIf="_authService.loggedIn()" routerLink="/profile"
           routerLinkActive="active"><b>Profile</b></a>
       </li>
