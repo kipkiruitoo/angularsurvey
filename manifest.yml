@@ -1,0 +1,4 @@
+applications:
+- name: angulargpts
+  memory: 128M
+  buildpack: sdk-for-nodejs
