@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     "Content-Type": "application/json"
   });
   profile = { user: "", dob: "", city: "", address: "", county: "", zip: "" };
-  user: any;
+  user: any = { username: "", email: "" };
   id;
   username;
   email;
@@ -48,10 +48,23 @@ export class ProfileComponent implements OnInit {
     this.isloading = true;
     console.log('something was submitted')
     console.log(this.profile)
+    // console.log(this.user.groups)
+    delete this.user.groups;
+
     this.prof.updateProfile(this.profile, this.id).subscribe(profile => {
       this.profile = profile;
-      this.isloading = false;
-      this.notifier.notify('success', 'profile updated sucessfully')
+      this.http.patch(this.userurl + this.id + '/', this.user).subscribe(res => {
+        this.isloading = false;
+        console.log(res)
+        this.notifier.notify('success', 'profile updated sucessfully')
+      },
+
+        err => {
+          this.isloading = false;
+          this.notifier.notify('error', 'something went wrong while trying to update your profile');
+          console.log(err)
+        })
+
     }, err => {
       this.isloading = false;
       this.notifier.notify('error', 'something went wrong while trying to update your profile');

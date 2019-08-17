@@ -38,7 +38,7 @@ export class ViewSurveysComponent implements OnInit {
             console.log(this.categories);
           this.cats = this.categories[0];
           localStorage.setItem('questions', JSON.stringify(this.cats));
-          this.isLoading = false;
+
         },
         err => console.log(err)
       );
@@ -49,6 +49,7 @@ export class ViewSurveysComponent implements OnInit {
         console.log(this.userid1)
         this.answers = res;
         console.log(this.answers[0]['category'])
+        this.isLoading = false;
         // this.getCats();
       },
       err => console.log(err)
