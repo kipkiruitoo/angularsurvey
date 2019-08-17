@@ -24,14 +24,16 @@ export class ProfileComponent implements OnInit {
   address;
   city;
   zip;
+  userurl: any;
   isloading = true;
   ngOnInit() {
+    this.userurl = 'https://gptsbackend.eu-gb.mybluemix.net/api/users/'
     this.id = localStorage.getItem('userId');
 
     this.prof.getProfile(this.id).subscribe(profile => {
       this.profile = profile
       console.log(this.profile)
-      this.http.get(this.profile.user).subscribe(user => {
+      this.http.get(this.userurl + this.id + '/').subscribe(user => {
         console.log(user);
         this.user = user
         this.isloading = false;
