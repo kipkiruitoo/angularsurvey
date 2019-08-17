@@ -22,21 +22,45 @@ export class RegisterComponent implements OnInit {
   registerUser() {
     this.isLoading = true;
     // console.log(this.registerUserData);
-    this._auth.registerUser(this.registerUserData)
-      .subscribe(
-        res => {
-          console.log(res)
-          this.notifier.notify('success', 'Registration Successful');
-          this._router.navigate(['login']);
-        },
+    if (!this.validateEmail(this.registerUserData.email)) {
 
-        err => {
-          console.log(err)
-          this.isLoading = false;
-        }
+      this.isLoading = false;
+      this.notifier.notify('error', 'Enter a valid email')
+    }
+    else if (!this.checklength(this.registerUserData.password)) {
+      this.isLoading = false;
+      this.notifier.notify('error', 'Password must be at least 6 characters')
+    }
+    else {
+      this._auth.registerUser(this.registerUserData)
+        .subscribe(
+          res => {
+            console.log(res)
+            this.notifier.notify('success', 'Registration Successful');
+            this._router.navigate(['login']);
+          },
 
-      );
+          err => {
+            console.log(err)
+            this.isLoading = false;
+            this.notifier.notify('error', 'Looks like that email is already used');
+          }
+
+        );
+    }
+
   }
-
+  checklength(pass) {
+    console.log(pass)
+    if (pass.length < 6) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
 }
 

@@ -1,17 +1,17 @@
 <app-loader *ngIf="isLoading"></app-loader>
 <div class="container" *ngIf="!isLoading">
+  <div class="well">
+    <p>Pick the categories you want to participate in below. you can always come back and edit your answers before the
+      nomination period ends</p>
+
+  </div>
   <div class="card" *ngFor="let res of cats">
     <div class="card-body">
       <h3 class="card-title">{{res.name}}</h3>
       <p class="card-text">{{res.description}}</p>
-      <a class="card-link" [routerLink]="['/survey']" class="grey-text d-flex justify-content-end"
-        (click)="getQues(res.id)">
-        <h5>View Category <i class="fa fa-angle-double-right"></i></h5>
-      </a>
-      <a class="card-link" [routerLink]="['/editanswer']" class="grey-text d-flex justify-content-end"
-        (click)="getAns(res.id)">
-        <h5>View Answers <i class="fa fa-angle-double-right"></i></h5>
-      </a>
+      <button class="btn btn-block" (click)="getQues(res.id)">
+        Answer or Edit your answers <i class="fa fa-angle-double-right"></i></button>
+
     </div>
   </div>
 </div>

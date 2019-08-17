@@ -3,6 +3,7 @@ import { SurveyService } from '../../../services/survey.service';
 import { AnswersService } from '../../../services/answers.service';
 import { ActivatedRoute } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-surveys',
@@ -11,12 +12,13 @@ import { NotifierService } from 'angular-notifier';
 })
 export class ViewSurveysComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private surveyService: SurveyService, private answerservice: AnswersService, private notifier: NotifierService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private surveyService: SurveyService, private answerservice: AnswersService, private notifier: NotifierService) { }
 
   categories = [];
   question = { 'title': '', 'showProgressBar': 'top', 'pages': '' };
   cats;
   answers;
+  answered = false;
   localid;
   userid1;
   userid2;
@@ -65,6 +67,17 @@ export class ViewSurveysComponent implements OnInit {
     localStorage.setItem('categoryId', id);
     this.localid = localStorage.getItem('categoryId');
     console.log(this.localid);
+    for (var i = 0; i < this.answers.length; i++) {
+      if (this.answers[i]['category'] === "http://gptsbackend.eu-gb.mybluemix.net/survey/categories/" + id + "/" && this.answers[i]['school'] === "http://gptsbackend.eu-gb.mybluemix.net/api/users/" + this.userid1 + "/"
+      ) {
+        this.answered = true;
+        this.getAns(id);
+      } else {
+
+      }
+    }
+
+
     for (var i = 0; i < this.cats.length; i++) {
       if (this.cats[i]['id'] === id) {
         this.question['title'] = this.cats[i]['name'];
@@ -78,6 +91,12 @@ export class ViewSurveysComponent implements OnInit {
         // localStorage.setItem('categoryId',id);
       }
     }
+
+    if (this.answered === true) {
+      this.router.navigate(['editanswer']);
+    } else {
+      this.router.navigate(['survey']);
+    }
   }
 
   getAns(id) {
@@ -86,7 +105,7 @@ export class ViewSurveysComponent implements OnInit {
     // this.userid2 = JSON.parse(this.userid1);
     // console.log(this.userid2)
     for (var i = 0; i < this.answers.length; i++) {
-      if (this.answers[i]['category'] === "https://gptsbackend.eu-gb.mybluemix.net/survey/categories/" + id + "/" && this.answers[i]['school'] === "https://gptsbackend.eu-gb.mybluemix.net/api/users/" + this.userid1 + "/"
+      if (this.answers[i]['category'] === "http://gptsbackend.eu-gb.mybluemix.net/survey/categories/" + id + "/" && this.answers[i]['school'] === "http://gptsbackend.eu-gb.mybluemix.net/api/users/" + this.userid1 + "/"
       ) {
         this.ans['category'] = this.answers[i]['category'];
         this.ans['school'] = this.answers[i]['school'];
@@ -97,6 +116,8 @@ export class ViewSurveysComponent implements OnInit {
       }
 
     }
+
+    this.router.navigate(['survey']);
   }
 
   openSurvey(id) {
