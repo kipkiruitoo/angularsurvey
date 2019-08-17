@@ -73,8 +73,8 @@ export class EditAnswerComponent implements OnInit {
       this.submitSurvey.emit(result.data);
       this.school = parseInt(this.authService.getUserId());
 
-      this.answers.category = 'https://kipkiruitoo.pythonanywhere.com/survey/categories/' + JSON.parse(localStorage.getItem('categoryId')) + '/';
-      this.answers.school = "https://kipkiruitoo.pythonanywhere.com/api/users/" + localStorage.getItem('userId') + '/';
+      this.answers.category = 'https://gptsbackend.eu-gb.mybluemix.net/survey/categories/' + JSON.parse(localStorage.getItem('categoryId')) + '/';
+      this.answers.school = "https://gptsbackend.eu-gb.mybluemix.net/api/users/" + localStorage.getItem('userId') + '/';
 
       // this.answers.school = this.school
       // this.category = this.surveyservice.getCategoryId();
@@ -94,7 +94,10 @@ export class EditAnswerComponent implements OnInit {
           this.notifier.notify('success', 'Your answers were saved');
           this.router.navigate(['viewsurvey'])
         },
-        err => console.log(err)
+        err => {
+          this.notifier.notify('error', err)
+          console.log(err)
+        }
       );
   }
 

@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public loginUserData = { email: '', password: '' };
   user_id;
   private readonly notifier: NotifierService;
-  user_url = "http://localhost:8000/api/users/";
+  user_url = "https://gptsbackend.eu-gb.mybluemix.net/api/users/";
   user: any = { groups: '' }
   isLoading = false;
   public role = "";

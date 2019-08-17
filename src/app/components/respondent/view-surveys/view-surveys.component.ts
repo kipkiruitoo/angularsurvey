@@ -86,7 +86,7 @@ export class ViewSurveysComponent implements OnInit {
     // this.userid2 = JSON.parse(this.userid1);
     // console.log(this.userid2)
     for (var i = 0; i < this.answers.length; i++) {
-      if (this.answers[i]['category'] === "https://kipkiruitoo.pythonanywhere.com/survey/categories/" + id + "/" && this.answers[i]['school'] === "https://kipkiruitoo.pythonanywhere.com/api/users/" + this.userid1 + "/"
+      if (this.answers[i]['category'] === "https://gptsbackend.eu-gb.mybluemix.net/survey/categories/" + id + "/" && this.answers[i]['school'] === "https://gptsbackend.eu-gb.mybluemix.net/api/users/" + this.userid1 + "/"
       ) {
         this.ans['category'] = this.answers[i]['category'];
         this.ans['school'] = this.answers[i]['school'];

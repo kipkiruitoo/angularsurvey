@@ -15,7 +15,7 @@ const httpOptions = {
 export class ProfileService {
 
 
-  profileurl = "https://kipkiruitoo.pythonanywhere.com/api/profile/"
+  profileurl = "https://gptsbackend.eu-gb.mybluemix.net/api/profile/"
   constructor(private http: HttpClient) {
 
 

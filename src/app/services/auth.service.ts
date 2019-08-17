@@ -12,9 +12,9 @@ export class AuthService {
   uId;
   user_id;
   role;
-  private _registerUrl = 'https://kipkiruitoo.pythonanywhere.com/api/auth/register/';
-  private _loginUrl = 'https://kipkiruitoo.pythonanywhere.com/api/auth/login/';
-  user_url = "https://kipkiruitoo.pythonanywhere.com/api/users/";
+  private _registerUrl = 'https://gptsbackend.eu-gb.mybluemix.net/api/auth/register/';
+  private _loginUrl = 'https://gptsbackend.eu-gb.mybluemix.net/api/auth/login/';
+  user_url = "https://gptsbackend.eu-gb.mybluemix.net/api/users/";
   constructor(private http: HttpClient,
     private _router: Router) { }
 
@@ -27,6 +27,7 @@ export class AuthService {
   }
   logoutUser() {
     localStorage.removeItem('token');
+    localStorage.clear();
     this.role = "Respondent"
     // LoginComponent.resetRole();
     this._router.navigate(['/login']);

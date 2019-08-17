@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class SurveyService {
   // Url for questionaires endpoint
-  private json_url = 'https://kipkiruitoo.pythonanywhere.com/survey/questionaires/';
+  private json_url = 'https://gptsbackend.eu-gb.mybluemix.net/survey/questionaires/';
   // Url for categories endpoint
-  private category_url = 'https://kipkiruitoo.pythonanywhere.com/survey/categories/';
-  private answers_url = 'https://kipkiruitoo.pythonanywhere.com/survey/answers/';
+  private category_url = 'https://gptsbackend.eu-gb.mybluemix.net/survey/categories/';
+  private answers_url = 'https://gptsbackend.eu-gb.mybluemix.net/survey/answers/';
 
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
@@ -102,6 +102,7 @@ export class SurveyService {
     this.answers = answer
     return this.http.post<any>(this.answers_url, this.answers);
   }
+
   // created this 2 new methods
   postCategory(category) {
 

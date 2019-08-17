@@ -95,8 +95,8 @@ export class SurveyComponent implements OnInit {
       this.submitSurvey.emit(result.data);
       console.log(result.data)
       console.log(this.answerservice.getCategoryId())
-      this.answers['category'] = 'https://kipkiruitoo.pythonanywhere.com/survey/categories/' + this.answerservice.getCategoryId() + '/';
-      this.answers['school'] = "https://kipkiruitoo.pythonanywhere.com/api/users/" + localStorage.getItem('userId') + '/';
+      this.answers['category'] = 'https://gptsbackend.eu-gb.mybluemix.net/survey/categories/' + this.answerservice.getCategoryId() + '/';
+      this.answers['school'] = "https://gptsbackend.eu-gb.mybluemix.net/api/users/" + localStorage.getItem('userId') + '/';
       this.answers['answer'] = result.data;
       this.result = result.data;
       this.onSurveySaved(this.answers);
@@ -115,7 +115,11 @@ export class SurveyComponent implements OnInit {
       this.router.navigate(['viewsurvey'])
 
     },
-      err => console.log(err)
+      err => {
+        this.notifier.notify('error', err)
+        console.log(err)
+      }
+
     );
 
   }
