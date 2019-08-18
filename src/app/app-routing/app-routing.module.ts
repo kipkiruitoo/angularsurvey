@@ -11,6 +11,8 @@ import { ViewSurveysComponent } from '../components/respondent/view-surveys/view
 import { EditAnswerComponent } from '../components/respondent/edit-answer/edit-answer.component';
 import { EditsurveyComponent } from '../components/admin/editsurvey/editsurvey.component';
 import { CategoryIndexComponent } from '../components/category-index/category-index.component';
+import { ResetComponent } from '../components/reset/reset.component';
+import { ConfirmComponent } from '../components/confirm/confirm.component';
 
 import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -31,6 +33,16 @@ const routes: Routes = [
     path: "survey",
     component: SurveyComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "reset",
+    component: ResetComponent,
+
+  },
+  {
+    path: "confirm",
+    component: ConfirmComponent,
+
   },
   {
     path: "admin",

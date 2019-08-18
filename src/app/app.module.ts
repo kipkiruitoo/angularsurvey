@@ -38,8 +38,10 @@ import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { ModalComponent } from './components/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResetComponent } from './components/reset/reset.component';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 @NgModule({
-  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent, EditAnswerComponent, SidemenuComponent, LoaderComponent, ModalComponent,],
+  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent, EditAnswerComponent, SidemenuComponent, LoaderComponent, ModalComponent, ResetComponent, ConfirmComponent,],
 
 
   imports: [BrowserModule, MatDialogModule, FormsModule, BrowserAnimationsModule, HttpClientModule, AppRoutingModule, MatProgressSpinnerModule, NotifierModule],
