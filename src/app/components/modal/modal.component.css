@@ -15,3 +15,27 @@ p {
 .l {
   margin: 20px;
 }
+
+
+
+.dialog {
+  position: relative;
+  max-width: 300px;
+  position: relative;
+  /* margin: 20px auto; */
+  overflow: -moz-hidden-unscrollable;
+
+  /* background-color: black; */
+  max-height: 250px;
+  min-width: 200px;
+}
+
+
+
+.dis {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #F48637;
+  transform: translate(58%, -58%);
+}

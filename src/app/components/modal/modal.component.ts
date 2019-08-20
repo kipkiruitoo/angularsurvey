@@ -21,5 +21,8 @@ export class ModalComponent implements OnInit {
     this.dialog.closeAll();
     this.router.navigate(['login'])
   }
+  close() {
+    this.dialog.closeAll();
+  }
 
 }
