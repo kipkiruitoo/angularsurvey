@@ -19,6 +19,9 @@
               <a class="nav-link" routerLink="/"><b>About Us</b></a>
           </li> -->
       <li class="nav-item">
+        <a class="nav-link" class="btn btn-outline-secondary" routerLink="/"><b>Home</b></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" class="btn btn-outline-secondary" *ngIf="!_authService.loggedIn()" routerLink="/login"
           routerLinkActive="active"><b>Login</b></a>
       </li>
