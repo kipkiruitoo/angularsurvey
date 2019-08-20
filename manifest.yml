@@ -1,4 +1,6 @@
 applications:
 - name: angulargpts
   memory: 512M
-  buildpack: sdk-for-nodejs
+  buildpack: staticfile_buildpack
+  host: angulargpts
+  path: dist
