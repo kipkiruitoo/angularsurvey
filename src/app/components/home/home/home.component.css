@@ -171,6 +171,14 @@
   }
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .carousel .carousel-inner .carousel-item {
+    max-height: 350px;
+  }
+
+}
+
 .collapsed {
   margin-top: 50px;
 }

@@ -35,3 +35,12 @@
     float: left;
   }
 }
+
+@media (min-width: 100px) and (max-width: 480px) {
+
+  .l {
+    width: 180px;
+    height: 25px;
+  }
+
+}

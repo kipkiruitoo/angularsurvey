@@ -18,11 +18,11 @@
           </div>
           <div class="form-group">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" class="form-control">
+            <input type="text" id="name" name="name" [(ngModel)]="profile.name" class="form-control">
           </div>
           <div class="form-group">
             <label for="role">Your Role in the School</label>
-            <input type="text" class="form-control" name="role" id="role">
+            <input type="text" class="form-control" name="role" [(ngModel)]="profile.role" id="role">
           </div>
           <hr>
           <h2>School Demographics</h2>
