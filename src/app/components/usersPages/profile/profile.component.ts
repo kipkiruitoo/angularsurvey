@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json"
   });
-  profile = { user: "", dob: "", city: "", address: "", county: "", zip: "" };
+  profile: any = { user: "", dob: "", city: "", address: "", county: "", zip: "", total_pop: '' };
   user: any = { username: "", email: "" };
   id;
   username;
@@ -26,6 +26,8 @@ export class ProfileComponent implements OnInit {
   zip;
   userurl: any;
   isloading = true;
+  isboys = false;
+  isgirls = false;
   ngOnInit() {
     this.userurl = 'https://gptsbackend.eu-gb.mybluemix.net/api/users/'
     this.id = localStorage.getItem('userId');
@@ -42,6 +44,29 @@ export class ProfileComponent implements OnInit {
 
 
 
+
+  }
+  genderselected(event) {
+    let selected = event.target.value;
+    console.log(selected)
+    if (selected == "Boys") {
+      this.isboys = true;
+      this.isgirls = false;
+      this.profile['girls_pop'] = 0;
+    }
+    else if (selected == "Girls") {
+      this.isboys = false;
+      this.isgirls = true;
+      this.profile['boys_pop'] = 0;
+    }
+    else if (selected == "Mixed") {
+      this.isboys = true;
+      this.isgirls = true;
+    }
+    else {
+      this.isboys = false;
+      this.isgirls = false;
+    }
   }
 
   onSubmit() {
@@ -50,7 +75,15 @@ export class ProfileComponent implements OnInit {
     console.log(this.profile)
     // console.log(this.user.groups)
     delete this.user.groups;
+    console.log(this.profile['boys_pop'])
+    this.profile.total_pop = parseInt(this.profile['boys_pop']) + parseInt(this.profile['girls_pop'])
+    console.log(this.profile.total_pop)
 
+    this.submit();
+
+  }
+
+  submit() {
     this.prof.updateProfile(this.profile, this.id).subscribe(profile => {
       this.profile = profile;
       this.http.patch(this.userurl + this.id + '/', this.user).subscribe(res => {

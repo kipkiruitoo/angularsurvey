@@ -6,16 +6,62 @@
       <div class="card-body">
         <form novalidate (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Name of The School</label>
             <input type="text" class="form-control" name="username" [(ngModel)]="user.username" id="name"
               placeholder="Name of the School">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1">The School's Email address</label>
             <input type="email" required class="form-control" name="email" [(ngModel)]="user.email"
               id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Schools email adress">
 
           </div>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="role">Your Role in the School</label>
+            <input type="text" class="form-control" name="role" id="role">
+          </div>
+          <hr>
+          <h2>School Demographics</h2>
+          <hr>
+          <div class="form-group">
+            <label for="gender">School Gender</label>
+            <select class="form-control" (change)="genderselected($event)" name="school_gender" id="gender"
+              [(ngModel)]="profile.school_gender">
+              <option value="Boys">Boys</option>
+              <option value="Girls">Girls</option>
+              <option value="Mixed">Mixed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="type">School Type</label>
+            <select class="form-control" name="school_type" id="type" [(ngModel)]="profile.school_type">
+              <option value="Boys">Boarding</option>
+              <option value="Girls">Day</option>
+              <option value="mixed">Both Boarding and Day</option>
+            </select>
+          </div>
+          <div class="form-group" *ngIf="isboys">
+            <label for="boyspop">Boys Population</label>
+            <input type="number" required class="form-control" name="boys_pop" [(ngModel)]="profile.boys_pop"
+              id="boyspop">
+          </div>
+          <div class="form-group" *ngIf="isgirls">
+            <label for="girlspop">Girls Population</label>
+            <input type="number" required class="form-control" name="girls_pop" [(ngModel)]="profile.girls_pop"
+              id="girlspop">
+          </div>
+          <div class="form-group">
+            <label for="tpop">Teachers Population</label>
+            <input type="number" required class="form-control" name="teachers_pop" [(ngModel)]="profile.teachers_pop"
+              id="tpop">
+          </div>
+          <hr>
+          <h2>Location of the School</h2>
+          <hr>
           <div class="form-group">
             <label for="county">county</label>
             <select class="form-control" name="county" [(ngModel)]="profile.county">
@@ -70,14 +116,59 @@
 
           </div>
           <div class="form-group">
+            <label for="subcounty">Sub County</label>
+            <input type="text" required class="form-control" name="subcounty" [(ngModel)]="profile.subcounty"
+              id="county" id="address" placeholder="Sub County">
+          </div>
+          <div class="form-group">
+            <label for="address">Constituency</label>
+            <input type="text" required class="form-control" name="constituency" [(ngModel)]="profile.constituency"
+              id="county" id="address" placeholder="Postal Address of the school">
+          </div>
+          <div class="form-group">
+            <label for="address">Ward</label>
+            <input type="text" required class="form-control" name="ward" [(ngModel)]="profile.ward" id="county"
+              id="address" placeholder="Postal Address of the school">
+          </div>
+
+
+          <div class="form-group">
             <label for="county">Telephone Number</label>
             <input type="text" required class="form-control" name="telephone" [(ngModel)]="profile.telephone"
               id="telephone" placeholder="Schools Telephone Number">
           </div>
           <div class="form-group">
-            <label for="address">Address</label>
+            <label for="address">Postal Address</label>
             <input type="text" required class="form-control" name="postaladdress" [(ngModel)]="profile.postaladdress"
               id="county" id="address" placeholder="Postal Address of the school">
+          </div>
+          <div class="form-group">
+            <label for="description">A brief Description about the School</label>
+            <textarea name="description" id="description" class="form-control" cols="30" rows="10"
+              [(ngModel)]="profile.description"></textarea>
+          </div>
+          <hr>
+          <h2>Social Media Handles</h2>
+          <hr>
+          <div class="form-group">
+            <label for="website">School's Website</label>
+            <input type="text" required class="form-control" name="website" [(ngModel)]="profile.website" id="website"
+              id="address" placeholder="school.com">
+          </div>
+          <div class="form-group">
+            <label for="twitter">Twitter</label>
+            <input type="text" required class="form-control" name="twitter" [(ngModel)]="profile.twitter" id="twitter"
+              placeholder="Twitter Handle of the school">
+          </div>
+          <div class="form-group">
+            <label for="fb">Facebook </label>
+            <input type="text" required class="form-control" name="facebook" [(ngModel)]="profile.fb" id="fb"
+              placeholder="Facebook Account for the school">
+          </div>
+          <div class="form-group">
+            <label for="other">Others</label>
+            <input type="text" required class="form-control" name="other" [(ngModel)]="profile.other" id="other"
+              placeholder="Other Social Media Handles">
           </div>
           <!-- 
           <div class="form-group">
