@@ -22,7 +22,8 @@
           </div>
           <div class="form-group">
             <label for="role">Your Role in the School</label>
-            <input type="text" class="form-control" name="role" [(ngModel)]="profile.role" id="role">
+            <input type="text" class="form-control" name="role" [(ngModel)]="profile.role" id="role"
+              placeholder="Principle, Deputy, Owner, Director">
           </div>
           <hr>
           <h2>School Demographics</h2>
@@ -123,12 +124,12 @@
           <div class="form-group">
             <label for="address">Constituency</label>
             <input type="text" required class="form-control" name="constituency" [(ngModel)]="profile.constituency"
-              id="county" id="address" placeholder="Postal Address of the school">
+              id="county" id="address" placeholder="Constituency of the School">
           </div>
           <div class="form-group">
             <label for="address">Ward</label>
             <input type="text" required class="form-control" name="ward" [(ngModel)]="profile.ward" id="county"
-              id="address" placeholder="Postal Address of the school">
+              id="address" placeholder="Ward of the school">
           </div>
 
 

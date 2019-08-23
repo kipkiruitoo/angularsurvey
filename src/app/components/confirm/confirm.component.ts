@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ConfirmComponent implements OnInit {
 
   constructor(public http: HttpClient, private _router: Router, private notifier: NotifierService) { }
-  url: any = "https://kipkiruitoo.pythonanywhere.com/api/password_reset/confirm/"
+  url: any = "https://gptsbackend.eu-gb.mybluemix.net/api/password_reset/confirm/"
   password1: any;
   key: any;
   isloading = false;

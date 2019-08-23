@@ -13,7 +13,7 @@ export class ResetComponent implements OnInit {
   email: any;
   data: any = { email: '' }
   isloading = false;
-  url: any = "https://kipkiruitoo.pythonanywhere.com/api/password_reset/"
+  url: any = "https://gptsbackend.eu-gb.mybluemix.net/api/password_reset/"
   ngOnInit() {
   }
 
