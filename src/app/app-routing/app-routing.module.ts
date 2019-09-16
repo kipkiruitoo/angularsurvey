@@ -13,6 +13,7 @@ import { EditsurveyComponent } from '../components/admin/editsurvey/editsurvey.c
 import { CategoryIndexComponent } from '../components/category-index/category-index.component';
 import { ResetComponent } from '../components/reset/reset.component';
 import { ConfirmComponent } from '../components/confirm/confirm.component';
+import { CategorySummaryComponent } from '../components/respondent/category-summary/category-summary.component';
 
 import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -85,6 +86,11 @@ const routes: Routes = [
     path: "viewsurvey",
     component: ViewSurveysComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "surveysummary",
+    component: CategorySummaryComponent,
+
   }
 ];
 @NgModule({

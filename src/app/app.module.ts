@@ -33,7 +33,7 @@ import { CategoryIndexComponent } from './components/category-index/category-ind
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { LoaderComponent } from './components/shared/loader/loader.component'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDialogModule } from '@angular/material';
+import {  MatExpansionModule, MatDialogModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button';
 import { LoaderService } from './services/loader.service';
@@ -42,13 +42,14 @@ import { ModalComponent } from './components/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetComponent } from './components/reset/reset.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { CategorySummaryComponent } from './components/respondent/category-summary/category-summary.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent, EditAnswerComponent, SidemenuComponent, LoaderComponent, ModalComponent, ResetComponent, ConfirmComponent,],
+  declarations: [AppComponent, SurveyComponent, SurveyCreatorComponent, HomeComponent, LoginComponent, RegisterComponent, VerifierComponent, JudgeComponent, ScripterComponent, ProfileComponent, HeaderComponent, FooterComponent, AdminComponent, AdminSidebarComponent, ViewSurveysComponent, EditsurveyComponent, CategoryIndexComponent, EditAnswerComponent, SidemenuComponent, LoaderComponent, ModalComponent, ResetComponent, ConfirmComponent, CategorySummaryComponent,],
 
 
-  imports: [BrowserModule, MatIconModule, MatButtonModule, MatDialogModule, FormsModule, BrowserAnimationsModule, HttpClientModule, AppRoutingModule, MatProgressSpinnerModule, NotifierModule],
+  imports: [BrowserModule, MatExpansionModule,MatIconModule, MatButtonModule, MatDialogModule, FormsModule, BrowserAnimationsModule, HttpClientModule, AppRoutingModule, MatProgressSpinnerModule, NotifierModule],
   providers: [AnswersService, SurveyService, AuthService, AuthGuard, LoaderService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
