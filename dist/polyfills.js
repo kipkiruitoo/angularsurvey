@@ -16935,8 +16935,8 @@ window['jQuery'] = jquery__WEBPACK_IMPORTED_MODULE_0__;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\projects\frontend\src\polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! E:\projects\frontend\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+__webpack_require__(/*! /home/gkarumba/Documents/Angular Projects /angularsurvey/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /home/gkarumba/Documents/Angular Projects /angularsurvey/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
 
 /***/ })
