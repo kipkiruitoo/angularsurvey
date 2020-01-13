@@ -48,7 +48,6 @@
     "@angular/cli": "7.3.9",
     "@angular/compiler-cli": "7.2.15",
     "@types/jasmine": "2.5.38",
-    "@types/knockout": "^3.4.53",
     "@types/node": "^6.0.103",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
