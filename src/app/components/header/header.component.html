@@ -21,30 +21,31 @@
       <li class="nav-item">
         <a class="nav-link" class="btn btn-outline-secondary" routerLink="/"><b>Home</b></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" class="btn btn-outline-secondary" *ngIf="!_authService.loggedIn()" routerLink="/login"
-          routerLinkActive="active"><b>Login</b></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class="btn btn-outline-secondary" *ngIf="!_authService.loggedIn()" routerLink="/register"
-          routerLinkActive="active"><b>Register</b></a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/viewsurvey" class="nav-link " class="btn btn-outline-secondary" *ngIf="_authService.loggedIn()"
-          routerLinkActive="active"><b>Categories</b></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class="btn btn-outline-secondary" *ngIf="_authService.loggedIn()" routerLink="/profile"
-          routerLinkActive="active"><b>Profile</b></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class="btn btn-outline-secondary" style="cursor:pointer" *ngIf="_authService.loggedIn()"
-          (click)="_authService.logoutUser()"><b>Logout</b></a>
-      </li>
+      
+         
     </ul>
   </div>
   <!-- </div> -->
 </nav>
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+          <i class="material-icons">&#xE5CD;</i>
+        </div>
+        <h4 class="modal-title">Registration Has Closed</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Thank You for Participating In The Great Places To School Initiative</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
